@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+const HeaderBlock = styled.header`
+`;
+
 const Navbar = styled.nav`
-  padding-left: 75px;
-  padding-right: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,7 +48,7 @@ const Logo = styled(Link)`
 `;
 
 export const Header: React.FC = () => {
-  return (<header>
+  return (<HeaderBlock>
     <Navbar>
       <Logo to="/" />
       <Ul>
@@ -73,5 +74,5 @@ export const Header: React.FC = () => {
         </Li>
       </Ul>
     </Navbar>
-  </header>);
+  </HeaderBlock>);
 }

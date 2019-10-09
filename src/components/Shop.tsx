@@ -6,10 +6,13 @@ import { Item } from './Item';
 export default class Shop extends React.Component<any, any> {
     render() {
         return (
-            <Switch>
-                <Route exact path='/item' component={Items} />
-                <Route path='/item/:id' component={Item} />
-            </Switch>
+            <div>
+                <span>Shop page</span>
+                <Switch>
+                    <Route exact path='/item' component={Items} />
+                    <Route path='/item/:id' component={Item} />
+                </Switch>
+            </div>
         );
     }
 }

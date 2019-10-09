@@ -6,7 +6,7 @@ export const Items = () => (
     <div>
         <ul>
             <li>
-                <Link to={`/item/1`}>Item 1</Link>
+                <Link to='/item/1'>Item 1</Link>
             </li>
         </ul>
     </div>
