@@ -1,19 +1,19 @@
 import { Switch, Route } from 'react-router-dom'
 import React from 'react'
-import Home from './Home'
-import Shop from './Shop'
-import Contacts from './Contacts'
-import Auth from './Auth'
-import Checkout from './Checkout'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Landing from '../landing';
+import Shop from '../shop';
+import Contacts from '../contacts';
+import Auth from '../auth';
+import Checkout from '../checkout';
 
 const MainBlock = styled.main`
 `;
 
-export const Main = () => (
+const Main = () => (
   <MainBlock>
     <Switch>
-      <Route exact path='/' component={Home} />
+      <Route exact path='/' component={Landing} />
       <Route path='/shop' component={Shop} />
       <Route path='/contact' component={Contacts} />
       <Route path='/signin' component={Auth} />
@@ -21,3 +21,5 @@ export const Main = () => (
     </Switch>
   </MainBlock>
 );
+
+export default Main;

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
-import { Items } from './Items';
-import { Item } from './Item';
+import Items from '../items';
+import Item from '../item';
 
-export default class Shop extends React.Component<any, any> {
+class Shop extends React.Component<any, any> {
     render() {
         return (
             <div>
@@ -16,3 +16,5 @@ export default class Shop extends React.Component<any, any> {
         );
     }
 }
+
+export default Shop

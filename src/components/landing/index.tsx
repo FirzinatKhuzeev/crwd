@@ -1,11 +1,13 @@
 import React from 'react';
 
-export default class Auth extends React.Component<any, any> {
+class Landing extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <div>Auth page</div>
+                <div>Home page</div>
             </div>
         );
     }
 }
+
+export default Landing;

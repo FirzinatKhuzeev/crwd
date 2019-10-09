@@ -1,53 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { HeaderBlock, Navbar, Logo, Ul, Li } from './styles';
 
-const HeaderBlock = styled.header`
-`;
-
-const Navbar = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Ul = styled.ul`
-  list-style: none;
-  display: flex;
-`;
-
-const Li = styled.li`
-  display: inline-block;
-  padding: 10px 15px;
-  text-decoration: none;
-  color: white;
-`;
-
-const NavLink = styled(Link)`
-  text-decoration: none;
-  color: black;
-`;
-
-const Logo = styled(Link)`
-  text-decoration: none;
-  display: block;
-  color: black;
-  width: 45px;
-  height: 45px;
-  background-color: rgba(0,0,0,.07);
-  border-radius: 50%;
-  position: relative;
-
-  &:before {
-    content: 'CRWD';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-`;
-
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   return (
     <HeaderBlock>
       <Navbar>
@@ -77,3 +32,5 @@ export const Header: React.FC = () => {
       </Navbar>
     </HeaderBlock>);
 }
+
+export default Header;

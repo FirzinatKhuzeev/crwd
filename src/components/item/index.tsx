@@ -1,5 +1,6 @@
 import React from "react";
 
-export const Item = () => {
+const Item = () => {
     return (<div>Item 1 data</div>);
 }
+export default Item;

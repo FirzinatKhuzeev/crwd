@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-export const Items = () => (
+const Items = () => (
     <div>
         <ul>
             <li>
@@ -12,7 +12,6 @@ export const Items = () => (
         <div>
             <div>Collection Name</div>
             <div>
-                <img alt='Item image'></img>
                 <div>
                     <span>Description</span>
                     <span>Price</span>
@@ -21,3 +20,5 @@ export const Items = () => (
         </div>
     </div>
 );
+
+export default Items;
