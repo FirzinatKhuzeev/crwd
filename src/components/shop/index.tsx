@@ -9,12 +9,12 @@ class Shop extends React.Component<any, any> {
             <div>
                 <span>Shop page</span>
                 <Switch>
-                    <Route exact path='/shop' component={Items} />
-                    <Route path='/shop/item/:id' component={Item} />
+                    <Route exact path="/shop" component={Items} />
+                    <Route path="/shop/item/:id" component={Item} />
                 </Switch>
             </div>
         );
     }
 }
 
-export default Shop
+export default Shop;

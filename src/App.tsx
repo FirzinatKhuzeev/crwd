@@ -5,17 +5,17 @@ import Header from './components/header';
 import Main from './components/main';
 
 const AppBlock = styled.div`
-  margin-left: 25px;
-  margin-right: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 `;
 
 const App: React.FC = () => {
-  return (
-    <AppBlock>
-      <Header />
-      <Main />
-    </AppBlock>
-  );
-}
+    return (
+        <AppBlock>
+            <Header />
+            <Main />
+        </AppBlock>
+    );
+};
 
 export default App;

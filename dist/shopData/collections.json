@@ -1,0 +1,32 @@
+[
+    {
+        "category": "Hats",
+        "data": [
+            {
+                "name": "Brown Hat",
+                "price": 25,
+                "descrption": ""
+            },
+            {
+                "name": "Wolf Cap",
+                "price": 14,
+                "descrption": ""
+            }
+        ]
+    },
+    {
+        "category": "jackets",
+        "data": [
+            {
+                "name": "Yellow B",
+                "price": 32,
+                "descrption": ""
+            },
+            {
+                "name": "Black Tor",
+                "price": 45,
+                "descrption": ""
+            }
+        ]
+    }
+]
