@@ -5,7 +5,7 @@ import Landing from '../landing';
 import Contacts from '../contacts';
 import Auth from '../auth';
 import Checkout from '../checkout';
-import ShopPreview from '../shop-preview';
+import ShopOverview from '../shop-overview';
 
 const MainBlock = styled.main``;
 
@@ -13,7 +13,7 @@ const Main = () => (
     <MainBlock>
         <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path="/shop" component={ShopPreview} />
+            <Route path="/shop" component={ShopOverview} />
             <Route path="/contact" component={Contacts} />
             <Route path="/signin" component={Auth} />
             <Route path="/checkout" component={Checkout} />

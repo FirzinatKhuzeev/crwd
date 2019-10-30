@@ -6,24 +6,31 @@ import { AppState } from '../../store';
 import { ShopOverviewContainer } from './styles';
 import { IShopState } from '../../store/shop/types';
 import ShopPreview from '../shop-preview';
-import getShopData from '../../store/shop/actions';
 
-interface IProps { }
+interface IProps {
+    shopData: IShopState
+}
 
-type ShopPreviewProps = IProps & RouteComponentProps;
+class ShopOverview extends React.Component<IProps, any> {
+    constructor(props: IProps) {
+        super(props);
+    }
 
-class ShopOverview extends React.Component<ShopPreviewProps, IShopState> {
     render() {
+
         return (
             <ShopOverviewContainer>
-                {this.state.shopCollection.map(({ id, ...props }) => (<ShopPreview key={id} {...props} />))}
+                {this.props.shopData.shopCollection.map(({ id, ...shopProps }) => {
+
+                    return (<ShopPreview key={id} {...shopProps} />)
+                })}
             </ShopOverviewContainer>
         );
     }
 }
 
 const mapStateToProps = (state: AppState) => ({
-    shopData: getShopData()
+    shopData: state.shop
 });
 
 export default connect(mapStateToProps)(ShopOverview);

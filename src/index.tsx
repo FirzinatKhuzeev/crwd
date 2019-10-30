@@ -4,12 +4,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from './styles/GlobalStyle';
+import { Provider } from 'react-redux';
+import configureStorage from './store';
+
+const store = configureStorage();
 
 ReactDOM.render(
-    <BrowserRouter>
-        <GlobalStyle />
-        <App />
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            <GlobalStyle />
+            <App />
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('root')
 );
 

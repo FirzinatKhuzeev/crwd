@@ -5,7 +5,7 @@ import {
 } from "./types"
 import { Dispatch } from "redux";
 
-const shopData: IShopState = {
+export const shopData: IShopState = {
     shopCollection: [
         {
             id: 1,

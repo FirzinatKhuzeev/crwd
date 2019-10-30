@@ -2,11 +2,9 @@ import React from 'react';
 import { ShopItemContainer, DescriptionContainer, NameContainer, PriceContainer } from './styles';
 import { IShopItem } from '../../store/shop/types';
 
-interface IProps { }
+type ShopItemProps = IShopItem;
 
-type ShopItemProps = IProps;
-
-class ShopItem extends React.Component<ShopItemProps, IShopItem> {
+class ShopItem extends React.Component<ShopItemProps, any> {
     constructor(props: ShopItemProps) {
         super(props);
     }
@@ -14,10 +12,10 @@ class ShopItem extends React.Component<ShopItemProps, IShopItem> {
     render() {
         return (
             <ShopItemContainer>
-                <img src={this.state.imageSrc} />
+                <img src={this.props.imageSrc} />
                 <DescriptionContainer>
-                    <NameContainer>{this.state.name}</NameContainer>
-                    <PriceContainer>{this.state.price}</PriceContainer>
+                    <NameContainer>{this.props.name}</NameContainer>
+                    <PriceContainer>{this.props.price}</PriceContainer>
                 </DescriptionContainer>
                 <input type="button" value="Add to cart" />
             </ShopItemContainer>

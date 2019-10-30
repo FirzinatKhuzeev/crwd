@@ -3,12 +3,12 @@ import { ShopPreviewContainer, TitleContainer, PreviewContainer } from './styles
 import ShopItem from '../shop-item';
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { IShopCollection } from '../../store/shop/types';
-
-interface IProps { }
+// todo
+type IProps = Pick<IShopCollection, "title" | "category" | "items">
 
 type ShopProps = IProps & RouteComponentProps;
 
-class ShopPreview extends React.Component<ShopProps, IShopCollection> {
+class ShopPreview extends React.Component<ShopProps, any> {
     constructor(props: ShopProps) {
         super(props);
     }
@@ -16,11 +16,11 @@ class ShopPreview extends React.Component<ShopProps, IShopCollection> {
     render() {
         return (
             <ShopPreviewContainer>
-                <TitleContainer onClick={() => this.props.history.push(`${this.props.match.path}/${this.state.category}`)}>
-                    {this.state.title.toUpperCase()}
+                <TitleContainer onClick={() => this.props.history.push(`${this.props.match.path}/${this.props.category}`)}>
+                    {this.props.title.toUpperCase()}
                 </TitleContainer>
                 <PreviewContainer>
-                    {this.state.items.map(item => (<ShopItem key={item.id} {...item} />))}
+                    {this.props.items.map(item => (<ShopItem key={item.id} {...item} />))}
                 </PreviewContainer>
             </ShopPreviewContainer>
         );
