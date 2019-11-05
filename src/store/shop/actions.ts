@@ -8,7 +8,7 @@ import { Dispatch } from "redux";
 export const shopData: IShopState = {
     shopCollection: [
         {
-            id: 1,
+            id: 11,
             category: "hats",
             title: "Hats",
             items: [
@@ -16,13 +16,13 @@ export const shopData: IShopState = {
                     id: 1,
                     name: "Brown Brim",
                     price: 25,
-                    imageSrc: ""
+                    imageSrc: "https://i.imgur.com/6uJyD6P.jpg"
                 },
                 {
                     id: 2,
                     name: "Wolf Cap",
                     price: 14,
-                    imageSrc: ""
+                    imageSrc: "https://i.imgur.com/PlEgKsF.jpg"
                 },
                 {
                     id: 3,
@@ -39,7 +39,7 @@ export const shopData: IShopState = {
             ]
         },
         {
-            id: 1,
+            id: 22,
             category: "Jackets",
             title: "jackets",
             items: [
