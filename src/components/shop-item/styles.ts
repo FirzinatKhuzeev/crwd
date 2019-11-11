@@ -7,7 +7,6 @@ export const ShopItemContainer = styled.div`
   align-items: center;
 `;
 
-
 export const DescriptionContainer = styled.div`
   width: 100%;
   height: 5%;

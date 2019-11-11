@@ -17,11 +17,9 @@ class ShopOverview extends React.Component<IProps, any> {
     }
 
     render() {
-
         return (
             <ShopOverviewContainer>
                 {this.props.shopData.shopCollection.map(({ id, ...shopProps }) => {
-
                     return (<ShopPreview key={id} {...shopProps} />)
                 })}
             </ShopOverviewContainer>

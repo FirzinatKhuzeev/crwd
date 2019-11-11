@@ -2,10 +2,8 @@ import React from 'react';
 import { ShopItemContainer, DescriptionContainer, NameContainer, PriceContainer } from './styles';
 import { IShopItem } from '../../store/shop/types';
 
-type ShopItemProps = IShopItem;
-
-class ShopItem extends React.Component<ShopItemProps, any> {
-    constructor(props: ShopItemProps) {
+class ShopItem extends React.Component<IShopItem, any> {
+    constructor(props: IShopItem) {
         super(props);
     }
 
