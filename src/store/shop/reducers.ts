@@ -1,7 +1,7 @@
 import {
     IShopState,
     ShopActionTypes,
-    DATA_GATHERING_SUCCUSS
+    DATA_GATHERING_SUCCESS
 } from "./types";
 import { shopData } from "./actions";
 
@@ -15,7 +15,7 @@ export default function shopReducer(
 ): IShopState {
     console.log(action.type);
     switch (action.type) {
-        case DATA_GATHERING_SUCCUSS:
+        case DATA_GATHERING_SUCCESS:
             return {
                 ...state,
                 ...action.payload

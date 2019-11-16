@@ -6,6 +6,7 @@ import Contacts from '../contacts';
 import Auth from '../auth';
 import Checkout from '../checkout';
 import ShopOverview from '../shop-overview';
+import ShopItemDetail from '../shop-item-detail';
 
 const MainBlock = styled.main``;
 

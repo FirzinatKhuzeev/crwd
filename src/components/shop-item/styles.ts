@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const ShopItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 350px;
-  align-items: center;
-`;
-
 export const ImageContainer = styled.div`
   width: 100%;
   height: 95%;
@@ -15,6 +8,24 @@ export const ImageContainer = styled.div`
   background-position: center;
   margin-bottom: 5px;
   background-image: ${({ imageSrc }: { imageSrc: string }) => `url(${imageSrc})`};
+`;
+
+export const ShopItemContainer = styled.div`
+  width: 22vw;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    ${ImageContainer} {
+      opacity: 0.7;
+    }
+    button {
+      display: block;
+    }
+  }
 `;
 
 export const DescriptionContainer = styled.div`

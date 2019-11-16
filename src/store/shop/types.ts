@@ -10,16 +10,19 @@ export interface IShopItem {
     name: string;
     imageSrc: string;
     price: number;
+    description: string;
+    size: string[];
+    color: string[];
 }
 
 export interface IShopState {
     shopCollection: IShopCollection[]
 }
 
-export const DATA_GATHERING_SUCCUSS = "DATA_GATHERING_SUCCUSS";
+export const DATA_GATHERING_SUCCESS = "DATA_GATHERING_SUCCESS";
 
 interface IGetShopDataAction {
-    type: typeof DATA_GATHERING_SUCCUSS,
+    type: typeof DATA_GATHERING_SUCCESS,
     payload: IShopState
 }
 

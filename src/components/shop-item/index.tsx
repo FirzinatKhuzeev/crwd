@@ -1,7 +1,8 @@
 import React from 'react';
 import { ShopItemContainer, DescriptionContainer, NameContainer, PriceContainer, ImageContainer, ItemLink } from './styles';
 import { IShopItem } from '../../store/shop/types';
-import { match, RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter, Switch, Route, Router } from 'react-router-dom';
+import ShopItemDetail from '../shop-item-detail';
 
 interface IShopItemProps {
     title: string;
@@ -18,11 +19,7 @@ class ShopItem extends React.Component<ShopItemProps, any> {
         return (
             <ShopItemContainer>
                 <ItemLink
-                    to={
-                        this.props.title
-                            ? `${this.props.match.url}/${this.props.title.toLowerCase()}/${this.props.id}`
-                            : `${this.props.match.url}/${this.props.id}`
-                    }>
+                    to={`${this.props.match.url}/${this.props.title.toLowerCase()}/${this.props.id}`} >
                     <ImageContainer imageSrc={this.props.imageSrc} />
                     <DescriptionContainer>
                         <NameContainer>{this.props.name}</NameContainer>

@@ -2,7 +2,7 @@ import React from 'react';
 import { ShopPreviewContainer, TitleContainer, PreviewContainer } from './styles';
 import ShopItem from '../shop-item';
 import { IShopCollection } from '../../store/shop/types';
-// todo
+
 type IProps = Pick<IShopCollection, "title" | "category" | "items">
 
 type ShopProps = IProps;

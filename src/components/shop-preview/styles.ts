@@ -3,10 +3,12 @@ import styled from "styled-components";
 export const ShopPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
 `;
 
 export const TitleContainer = styled.h1`
-  cursor: pointer;
+  font-size: 24px;
+  margin-bottom: 25px;
 `;
 
 export const PreviewContainer = styled.div`
