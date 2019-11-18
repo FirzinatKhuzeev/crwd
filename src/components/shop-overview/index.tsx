@@ -1,5 +1,4 @@
 import React from 'react';
-import { Switch, Route, RouteComponentProps } from 'react-router';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store';

@@ -19,7 +19,7 @@ class ShopItem extends React.Component<ShopItemProps, any> {
         return (
             <ShopItemContainer>
                 <ItemLink
-                    to={`${this.props.match.url}/${this.props.title.toLowerCase()}/${this.props.id}`} >
+                    to={`${this.props.match.url}/${this.props.title.toLowerCase()}/${this.props.id}`}>
                     <ImageContainer imageSrc={this.props.imageSrc} />
                     <DescriptionContainer>
                         <NameContainer>{this.props.name}</NameContainer>

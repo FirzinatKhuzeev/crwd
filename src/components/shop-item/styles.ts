@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const ImageContainer = styled.div`
   width: 100%;
@@ -46,7 +46,7 @@ export const PriceContainer = styled.span`
   text-align: right;
 `;
 
-export const ItemLink = styled(Link)`
+export const ItemLink = styled(NavLink)`
   display: block;
   width: 100%;
   height: 100%;

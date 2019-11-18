@@ -50,8 +50,16 @@ class ShopItemDetail extends React.Component<IProps, any> {
     }
 }
 
-const mapStateToProps = (state: AppState, ownProps: RouteComponentProps) => ({
-    shopItem: state.shop.shopCollection[0].items[0] // todo
-});
+export interface IOwnProps extends RouteComponentProps<{
+    id: string
+}> { }
+
+const mapStateToProps = (state: AppState, ownProps: IOwnProps) => {
+    return ({
+        shopItem: state.shop.shopCollection
+            .map(x => x.items
+                .filter((it: IShopItem) => it.id === Number(ownProps.match.params.id))[0])[0]
+    })
+};
 
 export default connect(mapStateToProps)(ShopItemDetail);

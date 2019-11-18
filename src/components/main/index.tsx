@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import Landing from '../landing';
@@ -10,16 +10,18 @@ import ShopItemDetail from '../shop-item-detail';
 
 const MainBlock = styled.main``;
 
-const Main = () => (
-    <MainBlock>
-        <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/shop" component={ShopOverview} />
-            <Route path="/contact" component={Contacts} />
-            <Route path="/signin" component={Auth} />
-            <Route path="/checkout" component={Checkout} />
-        </Switch>
-    </MainBlock>
-);
+const Main: React.FC<RouteComponentProps> = (props) => {
+    return (
+        <MainBlock>
+            <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route path="/shop" component={ShopOverview} />
+                <Route path="/contact" component={Contacts} />
+                <Route path="/signin" component={Auth} />
+                <Route path="/checkout" component={Checkout} />
+            </Switch>
+        </MainBlock>
+    )
+};
 
-export default Main;
+export default withRouter(Main);
