@@ -1,10 +1,10 @@
 import React from 'react';
 import { ShopItemContainer, DescriptionContainer, NameContainer, PriceContainer, ImageContainer, ItemLink } from './styles';
 import { IShopItem } from '../../store/shop/types';
-import { RouteComponentProps, withRouter, Switch, Route, Router } from 'react-router-dom';
-import ShopItemDetail from '../shop-item-detail';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-interface IShopItemProps {
+/// TODO: replace interface with type
+type IShopItemProps = {
     title: string;
 }
 

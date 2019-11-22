@@ -10,12 +10,23 @@ import ShopItemDetail from '../shop-item-detail';
 
 const MainBlock = styled.main``;
 
+// const PrivateRoute = props => {
+//     const token = localStorage.getItem("token")
+//     if (token) {
+//         return <Route {...props} />
+//     } else {
+//         history.push('/login')
+//     }
+// }
+
 const Main: React.FC<RouteComponentProps> = (props) => {
     return (
         <MainBlock>
             <Switch>
                 <Route exact path="/" component={Landing} />
-                <Route path="/shop" component={ShopOverview} />
+                {/* <Route path="/login" component={Login} /> */}
+                <Route path="/shop" exact component={ShopOverview} />
+                <Route path="/shop/:category/:id" component={ShopItemDetail} />
                 <Route path="/contact" component={Contacts} />
                 <Route path="/signin" component={Auth} />
                 <Route path="/checkout" component={Checkout} />

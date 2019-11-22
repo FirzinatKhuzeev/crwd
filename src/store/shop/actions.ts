@@ -3,6 +3,9 @@ import {
     ShopActionTypes,
     DATA_GATHERING_SUCCESS
 } from "./types"
+import { ThunkAction } from "redux-thunk";
+import { AppState } from "..";
+import { Action } from "redux";
 
 let description = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima sit consequuntur magnam tempore illo ea molestias fugit? Harum, natus repellat rem temporibus vitae aut. Sequi ad quisquam aut at illum.';
 
@@ -97,9 +100,23 @@ export const shopData: IShopState = {
     ]
 }
 
-export default function getShopData(): ShopActionTypes {
+export default function get1sShopData1(): ShopActionTypes {
     return {
         type: DATA_GATHERING_SUCCESS,
         payload: shopData
     }
+}
+
+export const getShopData = (
+    message: string
+): ThunkAction<void, AppState, null, Action<string>> => async (dispatch) => {
+    const asyncResp = await exampleAPI();
+    dispatch({
+        type: DATA_GATHERING_SUCCESS,
+        payload: shopData
+    });
+}
+
+function exampleAPI() {
+    return Promise.resolve('Async Chat Bot')
 }

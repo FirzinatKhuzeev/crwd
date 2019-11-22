@@ -16,7 +16,7 @@ import {
 import { RouteComponentProps } from 'react-router-dom';
 
 interface IShopitemProps {
-    shopItem: IShopItem
+    shopItem: IShopItem | null
 }
 
 type IProps = IShopitemProps & RouteComponentProps
@@ -27,7 +27,7 @@ class ShopItemDetail extends React.Component<IProps, any> {
     }
 
     render() {
-        return (
+        return this.props.shopItem && (
             <ItemDetailContainer>
                 <ItemDetailImageContainer>
                     <ItemDetailImage imageSrc={this.props.shopItem.imageSrc} />
@@ -55,10 +55,10 @@ export interface IOwnProps extends RouteComponentProps<{
 }> { }
 
 const mapStateToProps = (state: AppState, ownProps: IOwnProps) => {
+    // TODO: try to use reselect here
+    const values = state.shop.shopCollection.map(x => x.items.find(y => y.id === +ownProps.match.params.id)).filter(i => i)
     return ({
-        shopItem: state.shop.shopCollection
-            .map(x => x.items
-                .filter((it: IShopItem) => it.id === Number(ownProps.match.params.id))[0])[0]
+        shopItem: (values.length && values[0]) || null
     })
 };
 
