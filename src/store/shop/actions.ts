@@ -22,8 +22,8 @@ export const shopData: IShopState = {
                     price: 25,
                     imageSrc: "https://i.imgur.com/woPUlum.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 2,
@@ -31,8 +31,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/8sQa8Jg.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 3,
@@ -40,8 +40,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/t0442IY.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 4,
@@ -49,8 +49,8 @@ export const shopData: IShopState = {
                     price: 18,
                     imageSrc: "https://i.imgur.com/KeRw2S2.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 }
             ]
         },
@@ -65,8 +65,8 @@ export const shopData: IShopState = {
                     price: 25,
                     imageSrc: "https://i.imgur.com/KeRw2S2.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 2,
@@ -74,8 +74,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/t0442IY.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 3,
@@ -83,8 +83,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/woPUlum.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 },
                 {
                     id: 4,
@@ -92,31 +92,25 @@ export const shopData: IShopState = {
                     price: 18,
                     imageSrc: "https://i.imgur.com/8sQa8Jg.png",
                     description: description,
-                    size: [],
-                    color: []
+                    size: ["xs","s", "m", 'l'],
+                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
                 }
             ]
         }
     ]
 }
 
-export default function get1sShopData1(): ShopActionTypes {
+export default function getShopData(): ShopActionTypes {
     return {
         type: DATA_GATHERING_SUCCESS,
         payload: shopData
     }
 }
 
-export const getShopData = (
-    message: string
+export const fetchShopData = (
 ): ThunkAction<void, AppState, null, Action<string>> => async (dispatch) => {
-    const asyncResp = await exampleAPI();
     dispatch({
         type: DATA_GATHERING_SUCCESS,
         payload: shopData
     });
-}
-
-function exampleAPI() {
-    return Promise.resolve('Async Chat Bot')
 }

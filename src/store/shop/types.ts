@@ -21,10 +21,10 @@ export interface IShopState {
 
 export const DATA_GATHERING_SUCCESS = "DATA_GATHERING_SUCCESS";
 
-interface IGetShopDataAction {
+interface GetShopDataAction {
     type: typeof DATA_GATHERING_SUCCESS,
     payload: IShopState
 }
 
-export type ShopActionTypes = IGetShopDataAction;
+export type ShopActionTypes = GetShopDataAction;
 

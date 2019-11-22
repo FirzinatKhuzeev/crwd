@@ -5,12 +5,12 @@ import { AppState } from '../../store';
 import { ShopOverviewContainer } from './styles';
 import { IShopState } from '../../store/shop/types';
 import ShopPreview from '../shop-preview';
-import { ThunkDispatch } from 'redux-thunk';
 import getShopData from '../../store/shop/actions';
-import { AnyAction } from 'redux';
+import { Dispatch } from 'redux';
 
 interface IProps {
     shopData: IShopState
+    getShopData: typeof getShopData
 }
 
 class ShopOverview extends React.Component<IProps, any> {
@@ -19,7 +19,7 @@ class ShopOverview extends React.Component<IProps, any> {
     }
 
     componentDidMount() {
-        getShopData();
+        this.props.getShopData();
     }
 
     render() {
@@ -37,11 +37,9 @@ const mapStateToProps = (state: AppState) => ({
     shopData: state.shop
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<any, any, AnyAction>) => {
-    return {
-        getData: () => dispatch(getShopData())
-    };
-};
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    getShopData: () => dispatch(getShopData())
+});
 
 export default connect(
     mapStateToProps,

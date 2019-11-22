@@ -38,10 +38,10 @@ class ShopItemDetail extends React.Component<IProps, any> {
                         {this.props.shopItem.description}
                     </ItemDetailDescription>
                     <SizeContainer>
-                        <span>Size: {this.props.shopItem.size}</span>
-                    </SizeContainer>
+                        <span>Size: {this.props.shopItem.size.map(x => <button>{x}</button>)}</span>
+                    </SizeContainer>react set color
                     <ColorContainer>
-                        <span>Color: {this.props.shopItem.color}</span>
+                        <span>Color: {this.props.shopItem.color.map(x => { return <div>{x}</div> })}</span>
                     </ColorContainer>
                     <CustomButtonContainer>Add To Cart {this.props.shopItem.price}$</CustomButtonContainer>
                 </ItemDetailInfoBlock>
