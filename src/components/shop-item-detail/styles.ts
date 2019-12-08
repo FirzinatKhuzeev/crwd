@@ -42,16 +42,49 @@ export const CustomButtonContainer = styled.button`
 
 export const SizeContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   margin-top: 1em;
 `;
 
 export const ColorContainer = styled.div`
+  display: flex;
   margin-top: 1em;
 `;
 
 export const ItemDetailDescription = styled.div`
   margin-top: 1em;
   width: 100%;
+`;
+
+export const Item = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const SizeButtonLabel = styled.label`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const SizeButton = styled.input.attrs({ type: 'radio' })`
+  display: none;
+  margin: 10px;
+  &:checked + ${SizeButtonLabel} {
+      background-image: none;
+      background-color: #d0d0d0;
+    }
+`;
+
+export const ColorButton = styled.div`
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+  background-color:  ${({ color }: { color: string }) => `${color}`};
+  &:hover {
+    background-color: #d0d0d0;
+  }
 `;

@@ -1,10 +1,3 @@
-export interface IShopCollection {
-    id: number;
-    title: string;
-    category: string;
-    items: IShopItem[]
-}
-
 export interface IShopItem {
     id: number;
     name: string;
@@ -13,6 +6,13 @@ export interface IShopItem {
     description: string;
     size: string[];
     color: string[];
+}
+
+export interface IShopCollection {
+    id: number;
+    title: string;
+    category: string;
+    items: IShopItem[]
 }
 
 export interface IShopState {

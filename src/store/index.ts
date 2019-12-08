@@ -2,9 +2,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import shopReducer from './shop/reducers';
+import { checkoutReducer } from './checkout/reducers';
 
 const rootResucer = combineReducers({
-    shop: shopReducer
+    shop: shopReducer,
+    checkout: checkoutReducer
 });
 
 export type AppState = ReturnType<typeof rootResucer>;

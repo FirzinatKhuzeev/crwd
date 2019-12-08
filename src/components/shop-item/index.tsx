@@ -10,25 +10,24 @@ type IShopItemProps = {
 
 type ShopItemProps = IShopItemProps & IShopItem & RouteComponentProps;
 
-class ShopItem extends React.Component<ShopItemProps, any> {
-    constructor(props: ShopItemProps) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <ShopItemContainer>
-                <ItemLink
-                    to={`${this.props.match.url}/${this.props.title.toLowerCase()}/${this.props.id}`}>
-                    <ImageContainer imageSrc={this.props.imageSrc} />
-                    <DescriptionContainer>
-                        <NameContainer>{this.props.name}</NameContainer>
-                        <PriceContainer>{this.props.price}$</PriceContainer>
-                    </DescriptionContainer>
-                </ItemLink>
-            </ShopItemContainer>
-        )
-    }
-}
+const ShopItem: React.FC<ShopItemProps> = ({
+    title,
+    id,
+    imageSrc,
+    name,
+    price,
+    match
+}) => (
+        <ShopItemContainer>
+            <ItemLink
+                to={`${match.url}/${title.toLowerCase()}/${id}`}>
+                <ImageContainer imageSrc={imageSrc} />
+                <DescriptionContainer>
+                    <NameContainer>{name}</NameContainer>
+                    <PriceContainer>{price}$</PriceContainer>
+                </DescriptionContainer>
+            </ItemLink>
+        </ShopItemContainer>
+    );
 
 export default withRouter(ShopItem);

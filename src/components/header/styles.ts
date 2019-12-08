@@ -19,7 +19,6 @@ export const Li = styled.li`
   display: inline-block;
   padding: 10px 15px;
   text-decoration: none;
-  color: white;
 `;
 
 export const NavLink = styled(Link)`

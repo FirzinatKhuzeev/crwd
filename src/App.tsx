@@ -12,7 +12,7 @@ const AppBlock = styled.div`
 const App: React.FC = () => {
     return (
         <AppBlock>
-            <Header />
+            <Header showModal />
             <Main />
         </AppBlock>
     );

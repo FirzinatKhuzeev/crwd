@@ -22,8 +22,8 @@ export const shopData: IShopState = {
                     price: 25,
                     imageSrc: "https://i.imgur.com/woPUlum.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 2,
@@ -31,8 +31,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/8sQa8Jg.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 3,
@@ -40,8 +40,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/t0442IY.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 4,
@@ -49,8 +49,8 @@ export const shopData: IShopState = {
                     price: 18,
                     imageSrc: "https://i.imgur.com/KeRw2S2.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 }
             ]
         },
@@ -65,8 +65,8 @@ export const shopData: IShopState = {
                     price: 25,
                     imageSrc: "https://i.imgur.com/KeRw2S2.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 2,
@@ -74,8 +74,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/t0442IY.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 3,
@@ -83,8 +83,8 @@ export const shopData: IShopState = {
                     price: 14,
                     imageSrc: "https://i.imgur.com/woPUlum.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 },
                 {
                     id: 4,
@@ -92,8 +92,8 @@ export const shopData: IShopState = {
                     price: 18,
                     imageSrc: "https://i.imgur.com/8sQa8Jg.png",
                     description: description,
-                    size: ["xs","s", "m", 'l'],
-                    color: [ "#5e3927", "#d3c5bd", "#965a3e", "#af6e4d" ]
+                    size: ["xs", "s", "m", 'l'],
+                    color: ["#5e3927", "#d3c5bd", "#965a3e", "#af6e4d"]
                 }
             ]
         }
