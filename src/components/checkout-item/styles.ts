@@ -31,6 +31,10 @@ export const CheckoutItemQuantity = styled.span`
 
 export const AddItem = styled.div`
   cursor: pointer;
+
+  &:disabled {
+    background-color: grey;
+  }
 `;
 
 export const RemoveItem = styled(AddItem).attrs({
