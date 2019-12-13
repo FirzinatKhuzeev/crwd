@@ -5,12 +5,25 @@ import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import CheckoutModal from '../checkout-modal';
 import BasketIcon from "../basket-icon";
+import { signOut } from '../../store/user/actions';
+import { Dispatch } from 'redux';
+import { ICheckoutState } from '../../store/checkout/types';
+import { IUserState } from '../../store/user/types';
 
-interface IHeaderProps {
-    showModal: boolean;
+type OwnProps = {
 }
 
-const Header: React.FC<IHeaderProps> = ({ showModal }) => {
+type HeaderState = {
+    showModal: boolean;
+    isAuthenticated: boolean | null;
+}
+
+type DispatchProps = {
+    signOut: () => void;
+}
+
+type Props = OwnProps & HeaderState & DispatchProps;
+const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
     return (
         <HeaderBlock>
             <Navbar>
@@ -23,7 +36,9 @@ const Header: React.FC<IHeaderProps> = ({ showModal }) => {
                         <NavLink to="/contact">Contact</NavLink>
                     </Li>
                     <Li>
-                        <NavLink to="/signin">Sign in</NavLink>
+                        {isAuthenticated
+                            ? <a onClick={signOut}>Sign out</a>
+                            : <NavLink to="/signin">Sign in</NavLink>}
                     </Li>
                     <Li>
                         <BasketIcon />
@@ -35,10 +50,13 @@ const Header: React.FC<IHeaderProps> = ({ showModal }) => {
     );
 };
 
-const mapStateToProps = (state: AppState) => {
-    return ({
-        showModal: state.checkout.showModal
-    })
-};
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
+    showModal: state.checkout.showModal,
+    isAuthenticated: state.user.isAuthenticated
+});
 
-export default connect(mapStateToProps, null)(Header);
+const mapDispatchToProps = (dipatch: Dispatch) => ({
+    signOut: () => dipatch(signOut())
+});
+
+export default connect<HeaderState, DispatchProps, OwnProps, AppState>(mapStateToProps, mapDispatchToProps)(Header);
