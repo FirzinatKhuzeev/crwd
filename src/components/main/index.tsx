@@ -1,38 +1,49 @@
-import { Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom';
+import { Switch, Route, withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
 import Landing from '../landing';
 import Contacts from '../contacts';
-import Auth from '../auth';
 import Checkout from '../checkout';
 import ShopOverview from '../shop-overview';
 import ShopItemDetail from '../shop-item-detail';
+import SignIn from '../sign-in';
+import { AppState } from '../../store';
+import { connect } from 'react-redux';
 
 const MainBlock = styled.main``;
 
-// const PrivateRoute = props => {
-//     const token = localStorage.getItem("token")
-//     if (token) {
-//         return <Route {...props} />
-//     } else {
-//         history.push('/login')
-//     }
-// }
+type OwnProps = {
+}
 
-const Main: React.FC<RouteComponentProps> = (props) => {
+type UserState = {
+    isAuthenticated: boolean | null;
+}
+
+type DispatchProps = {
+}
+
+type Props = OwnProps & UserState & DispatchProps & RouteComponentProps;
+
+const Main: React.FC<Props> = (props) => {
     return (
         <MainBlock>
             <Switch>
                 <Route exact path="/" component={Landing} />
-                {/* <Route path="/login" component={Login} /> */}
                 <Route path="/shop" exact component={ShopOverview} />
                 <Route path="/shop/:category/:id" component={ShopItemDetail} />
                 <Route path="/contact" component={Contacts} />
-                <Route path="/signin" component={Auth} />
+                <Route exeact path="/signin" render={() => props.isAuthenticated ? (<Redirect to="/" />) : (<SignIn />)} />
                 <Route path="/checkout" component={Checkout} />
             </Switch>
         </MainBlock>
     )
 };
 
-export default withRouter(Main);
+const mapStateToProps = (state: AppState) => ({
+    isAuthenticated: state.user.isAuthenticated
+});
+
+export default withRouter(connect(
+    mapStateToProps,
+    null
+)(Main as any));

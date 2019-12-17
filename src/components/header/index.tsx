@@ -7,8 +7,6 @@ import CheckoutModal from '../checkout-modal';
 import BasketIcon from "../basket-icon";
 import { signOut } from '../../store/user/actions';
 import { Dispatch } from 'redux';
-import { ICheckoutState } from '../../store/checkout/types';
-import { IUserState } from '../../store/user/types';
 
 type OwnProps = {
 }
@@ -23,6 +21,7 @@ type DispatchProps = {
 }
 
 type Props = OwnProps & HeaderState & DispatchProps;
+
 const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
     return (
         <HeaderBlock>
@@ -37,7 +36,7 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
                     </Li>
                     <Li>
                         {isAuthenticated
-                            ? <a onClick={signOut}>Sign out</a>
+                            ? <NavLink to="/signin" onClick={signOut}>Sign out</NavLink>
                             : <NavLink to="/signin">Sign in</NavLink>}
                     </Li>
                     <Li>

@@ -21,6 +21,6 @@ export const signInGoogle = (): UserActions => {
 
 export const signOut = (): UserActions => {
     return {
-        type: SIGN_OUT
+        type: SIGN_OUT,
     };
 };
