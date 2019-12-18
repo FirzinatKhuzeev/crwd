@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const HeaderBlock = styled.header`
 `;
@@ -21,15 +21,14 @@ export const Li = styled.li`
   text-decoration: none;
 `;
 
-export const NavLink = styled(Link)`
+export const NavigationLink = styled(NavLink)`
   text-decoration: none;
-  color: black;
+  text-transform: uppercase;
 `;
 
-export const Logo = styled(Link)`
+export const Logo = styled(NavLink)`
   text-decoration: none;
   display: block;
-  color: black;
   width: 45px;
   height: 45px;
   background-color: rgba(0,0,0,.07);

@@ -4,7 +4,7 @@ export const CheckoutItemContainer = styled.div`
   width: 100%;
   display: flex;
   min-height: 100px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);;
   padding: 15px 0;
   font-size: 20px;
   align-items: center;

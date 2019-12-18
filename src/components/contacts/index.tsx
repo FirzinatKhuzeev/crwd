@@ -3,7 +3,12 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import {
     ContactsContainer,
     AddressContainer,
-    FormContainer
+    FormContainer,
+    AddressTitle,
+    FormInput,
+    TextArea,
+    FullAddress,
+    SubmitButton
 } from './styles';
 
 class Contacts extends React.Component<any, any> {
@@ -33,18 +38,22 @@ class Contacts extends React.Component<any, any> {
                     </Marker>
                 </Map>
                 <AddressContainer>
-                    <h2>Address</h2>
-                    <div>Peterburgskaya St, 50к23,<br />
-                        office 521,<br />
-                        Kazan, Tatarstan,<br />
-                        420107</div>
+                    <AddressTitle>Address</AddressTitle>
+                    <div>
+                        <FullAddress>
+                            Akvelon<br />
+                            Peterburgskaya St, 50к23,<br />
+                            office 521, Kazan, Tatarstan, 420107<br />
+                            +7 (999) 222-22-22
+                        </FullAddress>
+                    </div>
                     <h2>Contact Us</h2>
                     <FormContainer>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <textarea id="story" name="story"
+                        <FormInput type="text" placeholder="Name" />
+                        <FormInput type="email" placeholder="Email" />
+                        <TextArea id="story" name="story"
                             rows={5} cols={33} placeholder="Message" />
-                        <button type="submit">Submit</button>
+                        <SubmitButton type="submit">Submit</SubmitButton>
                     </FormContainer>
                 </AddressContainer>
             </ContactsContainer>

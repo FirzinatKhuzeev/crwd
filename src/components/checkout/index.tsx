@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import {
     CheckoutPageContainer,
-    TotalContainer
+    TotalContainer,
+    PayButton
 } from "./styles";
 import { IShopItemQuantity } from "../../store/checkout/types";
 import { AppState } from "../../store";
@@ -20,7 +21,7 @@ const Checkout: React.FC<ICheckoutProps> = ({ checkoutItems, total }) => (
         ))}
         {total > 0
             ? (<TotalContainer>
-                <span>TOTAL: ${total}</span>
+                <span>TOTAL: ${total}</span><PayButton>Pay</PayButton>
             </TotalContainer>)
             : "Your basket is empty"
         }

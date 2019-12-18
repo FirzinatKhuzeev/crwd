@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SignInContainer, SignInTitle } from "./styles";
+import { SignInContainer, SignInTitle, FormInput, SignInButton, FormContainer, AccountContainer } from "./styles";
 import { signInEmail } from "../../store/user/actions";
 import { Dispatch } from "redux";
 
@@ -32,15 +32,17 @@ class SignIn extends React.Component<SignInProps, AuthState> {
             <SignInContainer>
                 <SignInTitle>Sign In</SignInTitle>
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <input required name="email" type="email" placeholder="Email" />
-                        <input required name="password" type="password" placeholder="Password" />
+                    <FormContainer onSubmit={this.handleSubmit}>
+                        <FormInput required name="email" type="email" placeholder="Email" />
+                        <FormInput required name="password" type="password" placeholder="Password" />
                         <div className="buttons">
-                            <button>Sign in with Google</button>
-                            <button type="submit">Sign in</button>
+                            <SignInButton>Sign in with Google</SignInButton>
+                            <SignInButton type="submit">Sign in</SignInButton>
                         </div>
-                        <div><a href="#"> Don't have an account?</a></div>
-                    </form>
+                        <AccountContainer>
+                            <a href="/"> Don't have an account?</a>
+                        </AccountContainer>
+                    </FormContainer>
                 </div>
             </SignInContainer>
         );

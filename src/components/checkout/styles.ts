@@ -14,7 +14,14 @@ export const TotalContainer = styled.div`
   margin-left: auto;
 `;
 
-export const ButtonContainer = styled.button`
-  margin-left: auto;
-  margin-top: 50px;
+export const PayButton = styled.button`
+  background-color: #2690fb;
+  border-radius: 3px;
+  color: white;
+  font-size: 15px;
+  height: 35px;
+  width: 100px;
+  margin-left: 50px;
+  cursor: pointer;
+  font-family: inherit;
 `;

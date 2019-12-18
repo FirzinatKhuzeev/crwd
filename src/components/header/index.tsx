@@ -1,6 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { HeaderBlock, Navbar, Logo, Ul, Li } from './styles';
+import { HeaderBlock, Navbar, Logo, Ul, Li, NavigationLink } from './styles';
 import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import CheckoutModal from '../checkout-modal';
@@ -29,15 +28,15 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
                 <Logo to="/" />
                 <Ul>
                     <Li>
-                        <NavLink to="/shop">Shop</NavLink>
+                        <NavigationLink to="/shop">Shop</NavigationLink>
                     </Li>
                     <Li>
-                        <NavLink to="/contact">Contact</NavLink>
+                        <NavigationLink to="/contact">Contact</NavigationLink>
                     </Li>
                     <Li>
                         {isAuthenticated
-                            ? <NavLink to="/signin" onClick={signOut}>Sign out</NavLink>
-                            : <NavLink to="/signin">Sign in</NavLink>}
+                            ? <NavigationLink to="/signin" onClick={signOut}>Sign out</NavigationLink>
+                            : <NavigationLink to="/signin">Sign in</NavigationLink>}
                     </Li>
                     <Li>
                         <BasketIcon />
@@ -49,7 +48,7 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
     );
 };
 
-const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
+const mapStateToProps = (state: AppState) => ({
     showModal: state.checkout.showModal,
     isAuthenticated: state.user.isAuthenticated
 });
