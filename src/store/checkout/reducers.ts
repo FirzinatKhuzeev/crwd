@@ -17,8 +17,6 @@ export const checkoutReducer = (
     state = initialState,
     action: CheckoutActions
 ): ICheckoutState => {
-
-    console.log('ACTION type: ', action.type)
     switch (action.type) {
         case ADD_ITEM:
             return {
