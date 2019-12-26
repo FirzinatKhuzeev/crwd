@@ -3,21 +3,20 @@ import { HeaderBlock, Navbar, Logo, Ul, Li, NavigationLink } from './styles';
 import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import CheckoutModal from '../checkout-modal';
-import BasketIcon from "../basket-icon";
+import BasketIcon from '../basket-icon';
 import { signOut } from '../../store/user/actions';
 import { Dispatch } from 'redux';
 
-type OwnProps = {
-}
+type OwnProps = {};
 
 type HeaderState = {
     showModal: boolean;
     isAuthenticated: boolean | null;
-}
+};
 
 type DispatchProps = {
     signOut: () => void;
-}
+};
 
 type Props = OwnProps & HeaderState & DispatchProps;
 
@@ -34,9 +33,13 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
                         <NavigationLink to="/contact">Contact</NavigationLink>
                     </Li>
                     <Li>
-                        {isAuthenticated
-                            ? <NavigationLink to="/signin" onClick={signOut}>Sign out</NavigationLink>
-                            : <NavigationLink to="/signin">Sign in</NavigationLink>}
+                        {isAuthenticated ? (
+                            <NavigationLink to="/signin" onClick={signOut}>
+                                Sign out
+                            </NavigationLink>
+                        ) : (
+                            <NavigationLink to="/signin">Sign in</NavigationLink>
+                        )}
                     </Li>
                     <Li>
                         <BasketIcon />
@@ -50,11 +53,14 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
 
 const mapStateToProps = (state: AppState) => ({
     showModal: state.checkout.showModal,
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
 });
 
 const mapDispatchToProps = (dipatch: Dispatch) => ({
-    signOut: () => dipatch(signOut())
+    signOut: () => dipatch(signOut()),
 });
 
-export default connect<HeaderState, DispatchProps, OwnProps, AppState>(mapStateToProps, mapDispatchToProps)(Header);
+export default connect<HeaderState, DispatchProps, OwnProps, AppState>(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);

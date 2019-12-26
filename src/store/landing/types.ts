@@ -8,28 +8,31 @@ export interface IPhoto {
 }
 
 export interface IPhotoState {
-    photos: IPhoto[],
-    isFetching: boolean,
+    photos: IPhoto[];
+    isFetching: boolean;
 }
 
-export const DATA_GATHERING_SUCCESS = "DATA_GATHERING_SUCCESS";
-export const DATA_GATHERING_FAILED = "DATA_GATHERING_FAILED";
-export const DATA_GATHERING_START = "DATA_GATHERING_START";
+export const DATA_GATHERING_SUCCESS = 'DATA_GATHERING_SUCCESS';
+export const DATA_GATHERING_FAILED = 'DATA_GATHERING_FAILED';
+export const DATA_GATHERING_START = 'DATA_GATHERING_START';
 
 export interface IDataGatheringSuccessAction {
-    type: typeof DATA_GATHERING_SUCCESS,
-    payload: IPhoto[],
-    isFetching: false,
+    type: typeof DATA_GATHERING_SUCCESS;
+    payload: IPhoto[];
+    isFetching: false;
 }
 
 export interface IDataGatheringFailedAction {
-    type: typeof DATA_GATHERING_FAILED,
-    isFetching: false,
+    type: typeof DATA_GATHERING_FAILED;
+    isFetching: false;
 }
 
 export interface IDataGatheringStartAction {
-    type: typeof DATA_GATHERING_START,
-    isFetching: true,
+    type: typeof DATA_GATHERING_START;
+    isFetching: true;
 }
 
-export type PhotoActions = IDataGatheringStartAction | IDataGatheringSuccessAction | IDataGatheringFailedAction;
+export type PhotoActions =
+    | IDataGatheringStartAction
+    | IDataGatheringSuccessAction
+    | IDataGatheringFailedAction;

@@ -1,4 +1,4 @@
-import { IShopItem } from "../shop/types";
+import { IShopItem } from '../shop/types';
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
@@ -11,27 +11,26 @@ export interface IShopItemQuantity extends IShopItem {
 
 export interface ICheckoutState {
     showModal: boolean;
-    checkoutItems: IShopItemQuantity[]
+    checkoutItems: IShopItemQuantity[];
 }
 
 interface AddItem {
-    type: typeof ADD_ITEM,
-    payload: IShopItem
+    type: typeof ADD_ITEM;
+    payload: IShopItem;
 }
 
 interface RemoveItem {
-    type: typeof REMOVE_ITEM,
-    payload: IShopItemQuantity
+    type: typeof REMOVE_ITEM;
+    payload: IShopItemQuantity;
 }
 
 interface ClearItem {
-    type: typeof CLEAR_ITEM,
-    payload: IShopItemQuantity
+    type: typeof CLEAR_ITEM;
+    payload: IShopItemQuantity;
 }
 
 interface ShowCheckout {
-    type: typeof SHOW_CHECKOUT_MODAL
+    type: typeof SHOW_CHECKOUT_MODAL;
 }
 
 export type CheckoutActions = AddItem | RemoveItem | ClearItem | ShowCheckout;
-

@@ -10,7 +10,7 @@ const rootResucer = combineReducers({
     shop: shopReducer,
     checkout: checkoutReducer,
     user: userReducer,
-    photo: photoReducer
+    photo: photoReducer,
 });
 
 export type AppState = ReturnType<typeof rootResucer>;
@@ -19,10 +19,7 @@ export default function configureStorage() {
     const middlewares = [thunkMiddleware];
     const middleWareEnhancer = applyMiddleware(...middlewares);
 
-    const store = createStore(
-        rootResucer,
-        composeWithDevTools(middleWareEnhancer)
-    );
+    const store = createStore(rootResucer, composeWithDevTools(middleWareEnhancer));
 
     return store;
 }

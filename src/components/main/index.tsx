@@ -12,19 +12,17 @@ import { connect } from 'react-redux';
 
 const MainBlock = styled.main``;
 
-type OwnProps = {
-}
+type OwnProps = {};
 
 type UserState = {
     isAuthenticated: boolean | null;
-}
+};
 
-type DispatchProps = {
-}
+type DispatchProps = {};
 
 type Props = OwnProps & UserState & DispatchProps & RouteComponentProps;
 
-const Main: React.FC<Props> = (props) => {
+const Main: React.FC<Props> = props => {
     return (
         <MainBlock>
             <Switch>
@@ -32,18 +30,19 @@ const Main: React.FC<Props> = (props) => {
                 <Route path="/shop" exact component={ShopOverview} />
                 <Route path="/shop/:category/:id" component={ShopItemDetail} />
                 <Route path="/contact" component={Contacts} />
-                <Route exeact path="/signin" render={() => props.isAuthenticated ? (<Redirect to="/" />) : (<SignIn />)} />
+                <Route
+                    exeact
+                    path="/signin"
+                    render={() => (props.isAuthenticated ? <Redirect to="/" /> : <SignIn />)}
+                />
                 <Route path="/checkout" component={Checkout} />
             </Switch>
         </MainBlock>
-    )
+    );
 };
 
 const mapStateToProps = (state: AppState) => ({
-    isAuthenticated: state.user.isAuthenticated
+    isAuthenticated: state.user.isAuthenticated,
 });
 
-export default withRouter(connect(
-    mapStateToProps,
-    null
-)(Main as any));
+export default withRouter(connect(mapStateToProps, null)(Main as any));

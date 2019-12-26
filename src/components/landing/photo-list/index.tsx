@@ -1,23 +1,23 @@
-import { Li, Ul, Img } from "../styles";
-import React from "react";
-import { IPhoto } from "../../../store/landing/types";
+import { Li, Ul, Img } from '../styles';
+import React from 'react';
+import { IPhoto } from '../../../store/landing/types';
 
 type Props = {
-    photos: IPhoto[]
-}
+    photos: IPhoto[];
+};
 
-const PhotoList: React.FC<Props> = (props) => {
+const PhotoList: React.FC<Props> = props => {
     return (
         <Ul>
-            <Li />
             {props.photos.map(photo => {
                 return (
                     <Li key={photo.id}>
                         <Img src={photo.download_url} alt={photo.author} />
-                    </Li >);
+                    </Li>
+                );
             })}
         </Ul>
-    )
+    );
 };
 
 export default PhotoList;

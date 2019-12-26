@@ -9,8 +9,8 @@ import getShopData from '../../store/shop/actions';
 import { Dispatch } from 'redux';
 
 interface IProps {
-    shopData: IShopState
-    getShopData: typeof getShopData
+    shopData: IShopState;
+    getShopData: typeof getShopData;
 }
 
 class ShopOverview extends React.Component<IProps, any> {
@@ -26,7 +26,7 @@ class ShopOverview extends React.Component<IProps, any> {
         return (
             <ShopOverviewContainer>
                 {this.props.shopData.shopCollection.map(({ id, ...shopProps }) => {
-                    return (<ShopPreview key={id} {...shopProps} />)
+                    return <ShopPreview key={id} {...shopProps} />;
                 })}
             </ShopOverviewContainer>
         );
@@ -34,14 +34,11 @@ class ShopOverview extends React.Component<IProps, any> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    shopData: state.shop
+    shopData: state.shop,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    getShopData: () => dispatch(getShopData())
+    getShopData: () => dispatch(getShopData()),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ShopOverview);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopOverview);

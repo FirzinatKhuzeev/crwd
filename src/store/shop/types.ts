@@ -12,19 +12,18 @@ export interface IShopCollection {
     id: number;
     title: string;
     category: string;
-    items: IShopItem[]
+    items: IShopItem[];
 }
 
 export interface IShopState {
-    shopCollection: IShopCollection[]
+    shopCollection: IShopCollection[];
 }
 
-export const DATA_GATHERING_SUCCESS = "DATA_GATHERING_SUCCESS";
+export const DATA_GATHERING_SUCCESS = 'DATA_GATHERING_SUCCESS';
 
 interface GetShopDataAction {
-    type: typeof DATA_GATHERING_SUCCESS,
-    payload: IShopState
+    type: typeof DATA_GATHERING_SUCCESS;
+    payload: IShopState;
 }
 
 export type ShopActionTypes = GetShopDataAction;
-

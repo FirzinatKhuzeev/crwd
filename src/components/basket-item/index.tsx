@@ -1,15 +1,15 @@
-import React from "react"
-import { IShopItemQuantity } from "../../store/checkout/types";
+import React from 'react';
+import { IShopItemQuantity } from '../../store/checkout/types';
 import {
     BasketItemContainer,
     BasketItemImage,
     BasketItemDetails,
     ItemName,
-    ItemPrice
-} from "./styles";
+    ItemPrice,
+} from './styles';
 
 interface IBasketProps {
-    checkoutItem: IShopItemQuantity
+    checkoutItem: IShopItemQuantity;
 }
 
 const BasketItem: React.FC<IBasketProps> = ({ checkoutItem }) => (

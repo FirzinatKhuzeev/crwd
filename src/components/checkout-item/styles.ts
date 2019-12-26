@@ -1,52 +1,51 @@
 import styled from 'styled-components';
 
 export const CheckoutItemContainer = styled.div`
-  width: 100%;
-  display: flex;
-  min-height: 100px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);;
-  padding: 15px 0;
-  font-size: 20px;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    min-height: 100px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    font-size: 20px;
+    align-items: center;
 `;
 
 export const TextContainer = styled.span`
-  width: 23%;
+    width: 23%;
 `;
 
 export const CheckoutItemImageContainer = styled.div`
-  width: 23%;
-  padding-right: 15px;
+    width: 23%;
+    padding-right: 15px;
 `;
 
 export const CheckoutItemImage = styled.img`
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 `;
 
 export const CheckoutItemQuantity = styled.span`
-  width: 23%;
-  display: flex;
+    width: 23%;
+    display: flex;
 `;
 
 export const AddItem = styled.div`
-  cursor: pointer;
+    cursor: pointer;
 
-  &:disabled {
-    background-color: grey;
-  }
+    &:disabled {
+        background-color: grey;
+    }
 `;
 
 export const RemoveItem = styled(AddItem).attrs({
-  disabled: true
-})`
-`;
+    disabled: true,
+})``;
 
 export const QuantityValue = styled.span`
-  margin: 0 10px;
+    margin: 0 10px;
 `;
 
 export const RemoveButton = styled.div`
-  padding-left: 14px;
-  cursor: pointer;
+    padding-left: 14px;
+    cursor: pointer;
 `;
