@@ -21,26 +21,26 @@ type Props = OwnProps & PhotoState & DispatchProps;
 
 class Landing extends React.Component<Props, any> {
     public componentDidMount() {
-        if (this.props.photos.length === 0) {
-            this.props.getPhotos();
-        }
+        this.props.getPhotos();
     }
 
     render() {
         const images = [];
-        // for (let i = 1; i < 100; i++) {
-        //     let url = `https://source.unsplash.com/random?sig=${i}`;
-        //     let image = <Li><Img key={i} src={url} alt="The unsplash image" /></Li>;
-        //     images.push(image);
-        // }
+        for (let i = 1; i < 30; i++) {
+            let url = `https://source.unsplash.com/random?sig=${i}`;
+            let image = <Li><Img key={i} src={url} alt="The unsplash image" /></Li>;
+            images.push(image);
+        }
+
+        return (<div><Ul>{images}</Ul></div>);
 
         return (
             <div>
                 {this.props.isFetching ? (
                     <div>Loading....</div>
                 ) : (
-                    <PhotoList photos={this.props.photos} />
-                )}
+                        <PhotoList photos={this.props.photos} />
+                    )}
             </div>
         );
     }

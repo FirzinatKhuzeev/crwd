@@ -1,6 +1,5 @@
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
-import { RestDataSource } from './data/data-source';
 import {
     IPhotoState,
     PhotoActions,
@@ -12,6 +11,7 @@ import {
     DATA_GATHERING_START,
     IPhoto,
 } from './types';
+import PhotosService from '../../api/photos-service';
 
 export const getPhotosStart = (): IDataGatheringStartAction => {
     return {
@@ -43,11 +43,9 @@ export const getPhotos: ActionCreator<ThunkAction<
 >> = () => {
     return (dispatch: Dispatch) => {
         dispatch(getPhotosStart());
-        const dataSource: RestDataSource = new RestDataSource();
-        return dataSource
+        return PhotosService
             .getPhotos()
             .then(response => {
-                console.log('Photos: ', response);
                 dispatch(getPhotosSuccess(response.data));
             })
             .catch(error => {

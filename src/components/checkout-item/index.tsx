@@ -22,7 +22,7 @@ type OwnProps = {
 type StateProps = {};
 type DispatchProps = {
     addItem: (item: IShopItemQuantity) => void;
-    removeItem: (item: IShopItemQuantity) => void;
+    removeItem?: (item: IShopItemQuantity) => void;
     clearItem: (item: IShopItemQuantity) => void;
 };
 
@@ -34,19 +34,19 @@ const CheckoutItem: React.FC<Props> = ({ checkoutItem, addItem, removeItem, clea
             <CheckoutItemImageContainer>
                 <CheckoutItemImage src={checkoutItem.imageSrc} alt={checkoutItem.name} />
             </CheckoutItemImageContainer>
+            <div>
             <TextContainer>{checkoutItem.name}</TextContainer>
             <CheckoutItemQuantity>
                 <AddItem onClick={() => addItem(checkoutItem)}>+</AddItem>
                 <QuantityValue>{checkoutItem.quantity}</QuantityValue>
                 <RemoveItem
-                    disabled={true}
-                    onClick={
-                        checkoutItem.quantity - 1 === 0 ? undefined : () => removeItem(checkoutItem)
-                    }>
+                    disabled
+                    onClick={() => removeItem && removeItem(checkoutItem)}>
                     -
                 </RemoveItem>
             </CheckoutItemQuantity>
             <TextContainer>${checkoutItem.price}</TextContainer>
+            </div>
             <RemoveButton onClick={() => clearItem(checkoutItem)}>&#10005;</RemoveButton>
         </CheckoutItemContainer>
     );
@@ -54,7 +54,7 @@ const CheckoutItem: React.FC<Props> = ({ checkoutItem, addItem, removeItem, clea
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     addItem: (item: IShopItemQuantity) => dispatch(addItem(item)),
-    removeItem: (item: IShopItemQuantity) => dispatch(removeItem(item)),
+    removeItem: (item: IShopItemQuantity) => item.quantity > 1 ? dispatch(removeItem(item)) : undefined,
     clearItem: (item: IShopItemQuantity) => dispatch(clearItem(item)),
 });
 

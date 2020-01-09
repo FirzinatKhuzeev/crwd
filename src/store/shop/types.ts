@@ -20,6 +20,8 @@ export interface IShopState {
 }
 
 export const DATA_GATHERING_SUCCESS = 'DATA_GATHERING_SUCCESS';
+export const DATA_GATHERING_FAILED = 'DATA_GATHERING_FAILED';
+export const DATA_GATHERING_START = 'DATA_GATHERING_START';
 
 interface GetShopDataAction {
     type: typeof DATA_GATHERING_SUCCESS;

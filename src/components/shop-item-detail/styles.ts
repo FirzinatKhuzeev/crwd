@@ -69,7 +69,7 @@ export const SizeButtonLabel = styled.label`
     cursor: pointer;
 `;
 
-export const SizeButton = styled.input.attrs({ type: 'radio' })`
+export const SizeButton = styled.input`
     display: none;
     margin: 10px;
     &:checked + ${SizeButtonLabel} {
@@ -83,7 +83,7 @@ export const ColorButton = styled.div`
     height: 30px;
     margin-left: 5px;
     cursor: pointer;
-    background-color: ${({ color }: { color: string }) => `${color}`};
+    background-color: ${({ color }: any) => color};
     &:hover {
         background-color: #d0d0d0;
     }
