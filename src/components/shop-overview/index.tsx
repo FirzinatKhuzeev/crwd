@@ -5,20 +5,25 @@ import { AppState } from '../../store';
 import { ShopOverviewContainer } from './styles';
 import { IShopState } from '../../store/shop/types';
 import ShopPreview from '../shop-preview';
-import getShopData from '../../store/shop/actions';
-import { Dispatch } from 'redux';
+import { getShopData } from '../../store/shop/actions';
 
 interface IProps {
     shopData: IShopState;
-    getShopData: typeof getShopData;
+    isFetching: boolean;
+    getShopData: any;
 }
 
-class ShopOverview extends React.Component<IProps, any> {
+type DispatchProps = {
+    getShopData: any;
+};
+
+class ShopOverview extends React.Component<IProps & DispatchProps, any> {
     constructor(props: IProps) {
         super(props);
     }
 
     componentDidMount() {
+        debugger;
         this.props.getShopData();
     }
 
@@ -37,7 +42,7 @@ const mapStateToProps = (state: AppState) => ({
     shopData: state.shop,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
     getShopData: () => dispatch(getShopData()),
 });
 

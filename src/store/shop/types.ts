@@ -23,9 +23,21 @@ export const DATA_GATHERING_SUCCESS = 'DATA_GATHERING_SUCCESS';
 export const DATA_GATHERING_FAILED = 'DATA_GATHERING_FAILED';
 export const DATA_GATHERING_START = 'DATA_GATHERING_START';
 
-interface GetShopDataAction {
-    type: typeof DATA_GATHERING_SUCCESS;
-    payload: IShopState;
+interface GetShopDataStartAction {
+    type: typeof DATA_GATHERING_START;
+    isFetching: boolean;
 }
 
-export type ShopActionTypes = GetShopDataAction;
+interface GetShopDataSuccessAction {
+    type: typeof DATA_GATHERING_SUCCESS;
+    payload: IShopState;
+    isFetching: boolean;
+}
+
+
+interface GetShopDataFailedAction {
+    type: typeof DATA_GATHERING_FAILED;
+    isFetching: boolean;
+}
+
+export type ShopActionTypes = GetShopDataStartAction | GetShopDataSuccessAction | GetShopDataFailedAction;

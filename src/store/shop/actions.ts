@@ -1,25 +1,52 @@
-import { IShopState, ShopActionTypes, DATA_GATHERING_SUCCESS } from './types';
+import {
+    ShopActionTypes,
+    IShopState,
+    DATA_GATHERING_SUCCESS,
+    DATA_GATHERING_START,
+    DATA_GATHERING_FAILED
+} from './types';
 import { ThunkAction } from 'redux-thunk';
-import { AppState } from '..';
-import { Action } from 'redux';
+import { ActionCreator, Dispatch } from 'redux';
 import ShopService from '../../api/shop-service';
 
+export const getShopDataStart = (): ShopActionTypes => {
+    return {
+        type: DATA_GATHERING_START,
+        isFetching: true,
+    }
+}
 
-export default function getShopData(): ShopActionTypes {
+export const getShopDataSuccess = (data: IShopState): ShopActionTypes => {
     return {
         type: DATA_GATHERING_SUCCESS,
-        payload: shopData,
+        payload: data,
+        isFetching: false,
     };
 }
 
-export const fetchShopData = (): ThunkAction<
-    void,
-    AppState,
+export const getShopDataFailed = (): ShopActionTypes => {
+    return {
+        type: DATA_GATHERING_FAILED,
+        isFetching: false,
+    };
+}
+
+export const getShopData: ActionCreator<ThunkAction<
+    Promise<any>,
+    IShopState,
     null,
-    Action<string>
-> => async dispatch => {
-    dispatch({
-        type: DATA_GATHERING_SUCCESS,
-        payload: ShopService.getShopData(),
-    });
+    ShopActionTypes
+>> = () => {
+    return (dispatch: Dispatch) => {
+        dispatch(getShopDataStart());
+        return ShopService
+            .getShopData()
+            .then(response => {
+                dispatch(getShopDataSuccess(response));
+            })
+            .catch(error => {
+                console.error(error);
+                dispatch(getShopDataFailed());
+            });
+    };
 };
