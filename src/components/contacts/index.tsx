@@ -4,66 +4,62 @@ import {
     ContactsContainer,
     AddressContainer,
     FormContainer,
-    AddressTitle,
+    Title,
     FormInput,
     TextArea,
     FullAddress,
     SubmitButton,
 } from './styles';
 
-class Contacts extends React.Component<any, any> {
-    render() {
-        return (
-            <ContactsContainer>
-                <Map
-                    center={[55.7809, 49.1313]}
-                    zoom={15}
-                    maxZoom={18}
-                    attributionControl={true}
-                    zoomControl={true}
-                    doubleClickZoom={true}
-                    scrollWheelZoom={true}
-                    dragging={true}
-                    animate={true}
-                    easeLinearity={0.35}>
-                    <TileLayer
-                        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+const Contacts: React.FC = () => {
+    return (
+        <ContactsContainer>
+            <Map
+                center={[55.7809, 49.1313]}
+                zoom={15}
+                maxZoom={18}
+                attributionControl={true}
+                zoomControl={true}
+                doubleClickZoom={true}
+                scrollWheelZoom={true}
+                dragging={true}
+                animate={true}
+                easeLinearity={0.35}>
+                <TileLayer
+                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[55.7809, 49.1313]}>
+                    <Popup>Akvelon.</Popup>
+                </Marker>
+            </Map>
+            <AddressContainer>
+                <Title>Address</Title>
+                <FullAddress>
+                    Akvelon
+                        <br />
+                    Peterburgskaya St, 50к23,
+                        <br />
+                    office 521, Kazan, Tatarstan, 420107
+                        <br />
+                    +7 (999) 222-22-22
+                    </FullAddress>
+                <Title>Contact Us</Title>
+                <FormContainer>
+                    <FormInput type="text" placeholder="Name" />
+                    <FormInput type="email" placeholder="Email" />
+                    <TextArea
+                        id="story"
+                        name="story"
+                        rows={5}
+                        cols={33}
+                        placeholder="Message"
                     />
-                    <Marker position={[55.7809, 49.1313]}>
-                        <Popup>Akvelon.</Popup>
-                    </Marker>
-                </Map>
-                <AddressContainer>
-                    <AddressTitle>Address</AddressTitle>
-                    <div>
-                        <FullAddress>
-                            Akvelon
-                            <br />
-                            Peterburgskaya St, 50к23,
-                            <br />
-                            office 521, Kazan, Tatarstan, 420107
-                            <br />
-                            +7 (999) 222-22-22
-                        </FullAddress>
-                    </div>
-                    <h2>Contact Us</h2>
-                    <FormContainer>
-                        <FormInput type="text" placeholder="Name" />
-                        <FormInput type="email" placeholder="Email" />
-                        <TextArea
-                            id="story"
-                            name="story"
-                            rows={5}
-                            cols={33}
-                            placeholder="Message"
-                        />
-                        <SubmitButton type="submit">Submit</SubmitButton>
-                    </FormContainer>
-                </AddressContainer>
-            </ContactsContainer>
-        );
-    }
+                    <SubmitButton type="submit">Submit</SubmitButton>
+                </FormContainer>
+            </AddressContainer>
+        </ContactsContainer>
+    );
 }
 
 export default Contacts;

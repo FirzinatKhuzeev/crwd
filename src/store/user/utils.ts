@@ -1,7 +1,6 @@
-import { IUserState } from './types';
-import { AuthState } from '../../components/sign-in';
+import { IUserState, UserCredential } from './types';
 
-export const signInEmail = (creds: AuthState): IUserState => {
+export const signInEmail = (creds: UserCredential): IUserState => {
     const encodedData = window.btoa(`${creds.email}${creds.password}`);
     window.localStorage.setItem('token', encodedData);
     window.localStorage.setItem('authenticated', 'true');
@@ -9,11 +8,15 @@ export const signInEmail = (creds: AuthState): IUserState => {
     return { isAuthenticated: true, uuid: creds.email };
 };
 
-export const signInGoogle = (): void => {
+export const signInGoogle = (): IUserState => {
     console.error('sign-in with google is not implemented.');
+
+    return { isAuthenticated: false, uuid: null, };
 };
 
-export const signOut = (): void => {
+export const signOut = (): IUserState => {
     window.localStorage.setItem('authenticated', 'false');
     window.localStorage.removeItem('token');
+
+    return { isAuthenticated: false, uuid: null, };
 };

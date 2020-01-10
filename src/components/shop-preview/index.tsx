@@ -4,11 +4,11 @@ import ShopItem from '../shop-item';
 import { IShopCollection } from '../../store/shop/types';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-type IProps = Pick<IShopCollection, 'title' | 'category' | 'items'>;
+type Collection = Pick<IShopCollection, 'title' | 'category' | 'items'>;
 
-type ShopProps = IProps & RouteComponentProps;
+type Props = Collection & RouteComponentProps;
 
-const ShopPreview: React.FC<ShopProps> = (props: ShopProps) => {
+const ShopPreview: React.FC<Props> = (props) => {
     return (
         <ShopPreviewContainer>
             <TitleContainer>{props.title.toUpperCase()}</TitleContainer>

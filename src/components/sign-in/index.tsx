@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
     SignInContainer,
@@ -7,62 +7,58 @@ import {
     SignInButton,
     FormContainer,
     AccountContainer,
+    GoogleIcon,
+    ButtonsContainter,
+    CreateAccountLink,
+    GoogleSignInButton,
 } from './styles';
 import { signInEmail } from '../../store/user/actions';
 import { Dispatch } from 'redux';
+import { UserCredential } from '../../store/user/types';
 
-export interface AuthState {
-    email: string;
-    password: string;
+type Props = {
+    signInEmail: (cretential: UserCredential) => {};
 }
 
-export interface SignInProps {
-    signInEmail: (cretential: AuthState) => {};
-}
+const SignIn: React.FC<Props> = (props) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-export type HandleOnChangeFunctionType = (event: React.ChangeEvent<HTMLInputElement>) => void;
-
-class SignIn extends React.Component<SignInProps, AuthState> {
-    state = {
-        email: '',
-        password: '',
-    };
-
-    handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const { email, password } = this.state;
-        this.props.signInEmail({ email, password });
-    };
-
-    render() {
-        return (
-            <SignInContainer>
-                <SignInTitle>Sign In</SignInTitle>
-                <div>
-                    <FormContainer onSubmit={this.handleSubmit}>
-                        <FormInput required name="email" type="email" placeholder="Email" />
-                        <FormInput
-                            required
-                            name="password"
-                            type="password"
-                            placeholder="Password"
-                        />
-                        <div className="buttons">
-                            <SignInButton>Sign in with Google</SignInButton>
-                            <SignInButton type="submit">Sign in</SignInButton>
-                        </div>
-                        <AccountContainer>
-                            <a href="/"> Don't have an account?</a>
-                        </AccountContainer>
-                    </FormContainer>
-                </div>
-            </SignInContainer>
-        );
-    }
+    return (
+        <SignInContainer>
+            <SignInTitle>Sign In</SignInTitle>
+            <FormContainer onSubmit={e => {
+                e.preventDefault();
+                props.signInEmail({ email, password });
+            }}>
+                <FormInput
+                    required
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <FormInput
+                    required
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <ButtonsContainter>
+                    <GoogleSignInButton><GoogleIcon size="20" /> Sign in with Google</GoogleSignInButton>
+                    <SignInButton type="submit">Sign in</SignInButton>
+                </ButtonsContainter>
+                <AccountContainer>
+                    <CreateAccountLink href="/"> Don't have an account?</CreateAccountLink>
+                </AccountContainer>
+            </FormContainer>
+        </SignInContainer>
+    );
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signInEmail: (credential: AuthState) => dispatch(signInEmail(credential)),
+    signInEmail: (credential: UserCredential) => dispatch(signInEmail(credential)),
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

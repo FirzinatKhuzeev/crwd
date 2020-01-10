@@ -10,13 +10,13 @@ import {
 import { IShopItem } from '../../store/shop/types';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-type IShopItemProps = {
+type ShopItemProps = {
     title: string;
 };
 
-type ShopItemProps = IShopItemProps & IShopItem & RouteComponentProps;
+type Props = ShopItemProps & IShopItem & RouteComponentProps;
 
-const ShopItem: React.FC<ShopItemProps> = ({ title, id, imageSrc, name, price, match }) => (
+const ShopItem: React.FC<Props> = ({ title, id, imageSrc, name, price, match }) => (
     <ShopItemContainer>
         <ItemLink to={`${match.url}/${title.toLowerCase()}/${id}`}>
             <ImageContainer imageSrc={imageSrc} />

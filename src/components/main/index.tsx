@@ -9,6 +9,7 @@ import ShopItemDetail from '../shop-item-detail';
 import SignIn from '../sign-in';
 import { AppState } from '../../store';
 import { connect } from 'react-redux';
+import NotFound from '../not-found';
 
 const MainBlock = styled.main``;
 
@@ -36,6 +37,7 @@ const Main: React.FC<Props> = props => {
                     render={() => (props.isAuthenticated ? <Redirect to="/" /> : <SignIn />)}
                 />
                 <Route path="/checkout" component={Checkout} />
+                <Route component={NotFound} />
             </Switch>
         </MainBlock>
     );

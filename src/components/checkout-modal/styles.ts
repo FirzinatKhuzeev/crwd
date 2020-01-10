@@ -19,7 +19,7 @@ export const CheckoutItems = styled.div`
     height: 260px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
 `;
 
 export const CheckoutModalButton = styled.button`

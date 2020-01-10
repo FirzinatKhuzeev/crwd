@@ -6,7 +6,7 @@ type Props = {
     photos: IPhoto[];
 };
 
-const PhotoList: React.FC<Props> = props => {
+const PhotoList: React.FC<Props> = (props) => {
     return (
         <Ul>
             {props.photos.map(photo => {

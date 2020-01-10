@@ -1,6 +1,5 @@
 import { IUserState, UserActions, SIGN_IN_EMAIL, SIGN_IN_GOOGLE, SIGN_OUT } from './types';
-import { signInEmail } from './utils';
-import { signOut } from './actions';
+import { signInEmail, signOut, signInGoogle } from './utils';
 
 const initialState: IUserState = {
     isAuthenticated: false,
@@ -12,15 +11,9 @@ export const userReducer = (state = initialState, action: UserActions): IUserSta
         case SIGN_IN_EMAIL:
             return signInEmail(action.payload);
         case SIGN_IN_GOOGLE:
-            return {
-                ...state,
-            };
+            return signInGoogle();
         case SIGN_OUT:
-            signOut();
-            return {
-                isAuthenticated: false,
-                uuid: null,
-            };
+            return signOut();
         default:
             return state;
     }

@@ -5,12 +5,12 @@ import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-interface IBasketIconProps {
+type Props = {
     showCheckoutModal: () => {};
     checkoutItemsCount: number;
 }
 
-const BasketIcon: React.FC<IBasketIconProps> = ({ showCheckoutModal, checkoutItemsCount }) => (
+const BasketIcon: React.FC<Props> = ({ showCheckoutModal, checkoutItemsCount }) => (
     <BasketIconContainer onClick={showCheckoutModal}>
         <IconContainer />
         <ItemCountContainer>{checkoutItemsCount}</ItemCountContainer>

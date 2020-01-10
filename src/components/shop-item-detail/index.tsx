@@ -9,82 +9,77 @@ import {
     ItemDetailImage,
     ItemDetailInfoBlock,
     ItemDetailDescription,
-    CustomButtonContainer,
+    AddToCardButton,
     SizeContainer,
     ColorContainer,
     SizeButtonLabel,
     Item,
     SizeButton,
-    ColorButton,
+    ColorButton
 } from './styles';
 import { RouteComponentProps } from 'react-router-dom';
 import { addItem } from '../../store/checkout/actions';
 import { Dispatch } from 'redux';
 
 interface IShopitemProps {
-    shopItem: IShopItem | null | undefined;
+    shopItem?: IShopItem | null | undefined;
     addItem: typeof addItem;
 }
 
 type IProps = IShopitemProps & RouteComponentProps;
 
-class ShopItemDetail extends React.Component<IProps, any> {
-    constructor(props: IProps) {
-        super(props);
+const ShopItemDetail: React.FC<IProps> = (props: IProps): JSX.Element => {
+
+    const sizeElements = [];
+    const colorElements = [];
+    if (props.shopItem != null) {
+        const siezes = props.shopItem.size;
+        for (let i = 0; i < siezes.length; i++) {
+            sizeElements.push(
+                <Item key={i}>
+                    <SizeButton type="radio" name="radio" id={i.toString()} value={siezes[i]} />
+                    <SizeButtonLabel key={i.toString()} htmlFor={i.toString()}>
+                        {siezes[i]}
+                    </SizeButtonLabel>
+                </Item>
+            );
+        }
+        const colors = props.shopItem.color;
+        for (let i = 0; i < colors.length; i++) {
+            colorElements.push(
+                <Item key={i}>
+                    <ColorButton color={colors[i]} />
+                </Item>
+            );
+        }
     }
 
-    render() {
-        const sizeElements = [];
-        const colorElements = [];
-        if (this.props.shopItem != null) {
-            const siezes = this.props.shopItem.size;
-            for (let i = 0; i < siezes.length; i++) {
-                sizeElements.push(
-                    <Item>
-                        <SizeButton type="radio" name="radio" id={i.toString()} value={siezes[i]} />
-                        <SizeButtonLabel key={i.toString()} htmlFor={i.toString()}>
-                            {siezes[i].toLocaleUpperCase()}
-                        </SizeButtonLabel>
-                    </Item>
-                );
-            }
-            const colors = this.props.shopItem.color;
-            for (let i = 0; i < colors.length; i++) {
-                colorElements.push(
-                    <Item>
-                        <ColorButton color={colors[i]} />
-                    </Item>
-                );
-            }
-        }
-        return (
-            this.props.shopItem && (
-                <ItemDetailContainer>
-                    <ItemDetailImageContainer>
-                        <ItemDetailImage imageSrc={this.props.shopItem.imageSrc} />
-                    </ItemDetailImageContainer>
-                    <ItemDetailInfoBlock>
-                        <h1>{this.props.shopItem.name}</h1>
-                        <ItemDetailDescription>
-                            {this.props.shopItem.description}
-                        </ItemDetailDescription>
-                        <SizeContainer>
-                            <span>Size:</span>
-                            {sizeElements}
-                        </SizeContainer>
-                        <ColorContainer>
-                            <span>Color:</span>
-                            {colorElements}
-                        </ColorContainer>
-                        <CustomButtonContainer
-                            onClick={() => this.props.addItem(this.props.shopItem as IShopItem)}>
-                            Add To Cart {this.props.shopItem.price}$
-                        </CustomButtonContainer>
-                    </ItemDetailInfoBlock>
-                </ItemDetailContainer>
-            )
-        );
-    }
+    return (props.shopItem ?
+        <ItemDetailContainer>
+            <ItemDetailImageContainer>
+                <ItemDetailImage imageSrc={props.shopItem!.imageSrc} />
+            </ItemDetailImageContainer>
+            <ItemDetailInfoBlock>
+                <h1>{props.shopItem!.name}</h1>
+                <ItemDetailDescription>
+                    {props.shopItem!.description}
+                </ItemDetailDescription>
+                <SizeContainer>
+                    <span>Size:</span>
+                    {sizeElements}
+                </SizeContainer>
+                <ColorContainer>
+                    <span>Color:</span>
+                    {colorElements}
+                </ColorContainer>
+                <AddToCardButton
+                    onClick={() => props.addItem(props.shopItem as IShopItem)}>
+                    Add To Cart <strong>${props.shopItem!.price}</strong>
+                </AddToCardButton>
+            </ItemDetailInfoBlock>
+        </ItemDetailContainer>
+        : <div />
+    );
 }
 
 export type IOwnProps = RouteComponentProps<{

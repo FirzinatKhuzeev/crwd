@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Google } from 'styled-icons/icomoon';
 
 export const SignInContainer = styled.div`
     display: flex;
@@ -7,12 +8,12 @@ export const SignInContainer = styled.div`
     align-items: center;
 `;
 
-export const SignInTitle = styled.h2`
+export const SignInTitle = styled.h1`
     margin: 10px 0;
 `;
 
 export const FormContainer = styled.form`
-    width: 300px;
+    width: 400px;
 `;
 
 export const FormInput = styled.input`
@@ -29,17 +30,42 @@ export const FormInput = styled.input`
     margin-bottom: 10px;
 `;
 
-export const SignInButton = styled.button`
-    background-color: #2690fb;
+export const Button = styled.button`
     border-radius: 3px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+    border: 1px solid #0000001c;
+`;
+
+export const SignInButton = styled(Button)`
+    background-color: #2690fb;
     color: white;
     font-size: 15px;
     height: 35px;
-    width: 150px;
-    cursor: pointer;
-    font-family: inherit;
+    width: 100px;
 `;
 
+export const GoogleSignInButton = styled(Button)`
+    background-color: #fff;
+    color: black;
+    height: 35px;
+    margin-right: 10px;
+    min-width: 200px;
+`;
+
+export const ButtonsContainter = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`;
+
+export const GoogleIcon = styled(Google)``;
+
 export const AccountContainer = styled.div`
-    margin-top: 10px;
+    text-align: center;
+    padding: 15px;
+`;
+
+export const CreateAccountLink = styled.a`
+    color: #329bfe;
 `;

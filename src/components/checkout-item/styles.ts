@@ -10,12 +10,17 @@ export const CheckoutItemContainer = styled.div`
     align-items: center;
 `;
 
+export const CheckoutItemDescription = styled.div`
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+`;
+
 export const TextContainer = styled.span`
-    width: 23%;
 `;
 
 export const CheckoutItemImageContainer = styled.div`
-    width: 23%;
+    width: 200px;
     padding-right: 15px;
 `;
 
@@ -25,7 +30,6 @@ export const CheckoutItemImage = styled.img`
 `;
 
 export const CheckoutItemQuantity = styled.span`
-    width: 23%;
     display: flex;
 `;
 

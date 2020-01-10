@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CreditCard } from 'styled-icons/boxicons-regular';
 
 export const CheckoutPageContainer = styled.div`
     width: 55%;
@@ -14,14 +15,20 @@ export const TotalContainer = styled.div`
     margin-left: auto;
 `;
 
+export const TotalLabel = styled.span`
+    text-transform: uppercase;
+    padding-right: 30px;
+`;
+
 export const PayButton = styled.button`
     background-color: #2690fb;
-    border-radius: 3px;
+    border-radius: 5px;
     color: white;
-    font-size: 15px;
     height: 35px;
-    width: 100px;
-    margin-left: 50px;
+    width: 80px;
     cursor: pointer;
-    font-family: inherit;
+    border: 1px solid transparent;
+    font-size: 1rem;
 `;
+
+export const CardIcon = styled(CreditCard)``;

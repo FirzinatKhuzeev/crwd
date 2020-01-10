@@ -94,7 +94,8 @@ export default class ShopService {
                             },
                         ],
                     },
-                ]
+                ],
+            isFetching: false
         };
 
     public static getShopData(): Promise<any> {

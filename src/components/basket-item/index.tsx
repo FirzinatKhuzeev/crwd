@@ -8,17 +8,17 @@ import {
     ItemPrice,
 } from './styles';
 
-interface IBasketProps {
+type Props = {
     checkoutItem: IShopItemQuantity;
 }
 
-const BasketItem: React.FC<IBasketProps> = ({ checkoutItem }) => (
+const BasketItem: React.FC<Props> = ({ checkoutItem }) => (
     <BasketItemContainer>
         <BasketItemImage src={checkoutItem.imageSrc} alt="item" />
         <BasketItemDetails>
             <ItemName>{checkoutItem.name}</ItemName>
             <ItemPrice>
-                {checkoutItem.quantity}x ${checkoutItem.price}
+                {checkoutItem.quantity} x ${checkoutItem.price}
             </ItemPrice>
         </BasketItemDetails>
     </BasketItemContainer>

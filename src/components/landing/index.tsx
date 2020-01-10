@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Img, Ul, Li } from './styles';
 import { getPhotos } from '../../store/landing/actions';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { IPhoto } from '../../store/landing/types';
-import PhotoList from './photo-list';
 
 type OwnProps = {};
 
@@ -19,31 +18,30 @@ type DispatchProps = {
 
 type Props = OwnProps & PhotoState & DispatchProps;
 
-class Landing extends React.Component<Props, any> {
-    public componentDidMount() {
-        this.props.getPhotos();
+const Landing: React.FC<Props> = (props: Props) => {
+
+    useEffect(() => {
+        props.getPhotos();
+    }, []);
+
+    const images = [];
+    for (let i = 1; i < 30; i++) {
+        let url = `https://source.unsplash.com/random?sig=${i}`;
+        let image = <Li key={i}><Img  src={url} alt="The unsplash image" /></Li>;
+        images.push(image);
     }
 
-    render() {
-        const images = [];
-        for (let i = 1; i < 30; i++) {
-            let url = `https://source.unsplash.com/random?sig=${i}`;
-            let image = <Li><Img key={i} src={url} alt="The unsplash image" /></Li>;
-            images.push(image);
-        }
+    return (<div><Ul>{images}</Ul></div>);
 
-        return (<div><Ul>{images}</Ul></div>);
-
-        return (
-            <div>
-                {this.props.isFetching ? (
-                    <div>Loading....</div>
-                ) : (
-                        <PhotoList photos={this.props.photos} />
-                    )}
-            </div>
-        );
-    }
+    // return (
+    //     <div>
+    //         {this.props.isFetching ? (
+    //             <div>Loading....</div>
+    //         ) : (
+    //                 <PhotoList photos={this.props.photos} />
+    //             )}
+    //     </div>
+    // );
 }
 
 const mapStateToProps = (state: AppState) => ({

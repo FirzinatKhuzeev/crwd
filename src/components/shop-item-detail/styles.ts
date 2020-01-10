@@ -26,7 +26,7 @@ export const ItemDetailInfoBlock = styled.div`
     }
 `;
 
-export const CustomButtonContainer = styled.button`
+export const AddToCardButton = styled.button`
     border-radius: 5px;
     width: 100%;
     height: 35px;
@@ -35,6 +35,8 @@ export const CustomButtonContainer = styled.button`
     font-size: 15px;
     text-transform: uppercase;
     cursor: pointer;
+    border: 1px solid #0000001c;
+    font-size: 1rem;
 `;
 
 export const SizeContainer = styled.div`
@@ -62,6 +64,7 @@ export const Item = styled.div`
 
 export const SizeButtonLabel = styled.label`
     display: inline-block;
+    text-transform: uppercase;
     width: 20px;
     height: 20px;
     margin-left: 5px;

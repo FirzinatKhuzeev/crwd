@@ -33,4 +33,8 @@ interface ShowCheckout {
     type: typeof SHOW_CHECKOUT_MODAL;
 }
 
-export type CheckoutActions = AddItem | RemoveItem | ClearItem | ShowCheckout;
+export type CheckoutActions =
+    | AddItem
+    | RemoveItem
+    | ClearItem
+    | ShowCheckout;

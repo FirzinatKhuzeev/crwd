@@ -1,7 +1,6 @@
-import { SIGN_IN_EMAIL, SIGN_IN_GOOGLE, SIGN_OUT, UserActions } from './types';
-import { AuthState } from '../../components/sign-in';
+import { SIGN_IN_EMAIL, SIGN_IN_GOOGLE, SIGN_OUT, UserActions, UserCredential } from './types';
 
-export const signInEmail = (creds: AuthState): UserActions => {
+export const signInEmail = (creds: UserCredential): UserActions => {
     return {
         type: SIGN_IN_EMAIL,
         payload: creds,

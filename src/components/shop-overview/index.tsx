@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { AppState } from '../../store';
@@ -13,29 +13,19 @@ interface IProps {
     getShopData: any;
 }
 
-type DispatchProps = {
-    getShopData: any;
-};
 
-class ShopOverview extends React.Component<IProps & DispatchProps, any> {
-    constructor(props: IProps) {
-        super(props);
-    }
+const ShopOverview: React.FC<IProps> = (props: IProps) => {
+    useEffect(() => {
+        props.getShopData();
+    }, []);
 
-    componentDidMount() {
-        debugger;
-        this.props.getShopData();
-    }
-
-    render() {
-        return (
-            <ShopOverviewContainer>
-                {this.props.shopData.shopCollection.map(({ id, ...shopProps }) => {
-                    return <ShopPreview key={id} {...shopProps} />;
-                })}
-            </ShopOverviewContainer>
-        );
-    }
+    return (
+        <ShopOverviewContainer>
+            {props.shopData.shopCollection.map(({ id, ...shopProps }) => {
+                return <ShopPreview key={id} {...shopProps} />;
+            })}
+        </ShopOverviewContainer>
+    );
 }
 
 const mapStateToProps = (state: AppState) => ({

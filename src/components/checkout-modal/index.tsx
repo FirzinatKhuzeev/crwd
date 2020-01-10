@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import { EmptyMessage, CheckoutModalContainer, CheckoutItems, CheckoutModalButton } from './styles';
+import {
+    EmptyMessage,
+    CheckoutModalContainer,
+    CheckoutItems,
+    CheckoutModalButton
+} from './styles';
 
 import { showCheckoutModal } from '../../store/checkout/actions';
 import { AppState } from '../../store';
@@ -10,14 +15,14 @@ import { IShopItemQuantity } from '../../store/checkout/types';
 import { Dispatch } from 'redux';
 import BasketItem from '../basket-item';
 
-interface ICheckoutModal {
+type CheckoutModalState = {
     checkoutItems: IShopItemQuantity[];
     dispatch: Dispatch;
 }
 
-type IcheckoutModalProps = RouteComponentProps & ICheckoutModal;
+type Props = RouteComponentProps & CheckoutModalState;
 
-const CheckoutModal: React.FC<IcheckoutModalProps> = ({ checkoutItems, history, dispatch }) => (
+const CheckoutModal: React.FC<Props> = ({ checkoutItems, history, dispatch }) => (
     <CheckoutModalContainer>
         <CheckoutItems>
             {checkoutItems.length ? (
@@ -25,8 +30,8 @@ const CheckoutModal: React.FC<IcheckoutModalProps> = ({ checkoutItems, history, 
                     <BasketItem key={item.id} checkoutItem={item} />
                 ))
             ) : (
-                <EmptyMessage>Your basket is empty</EmptyMessage>
-            )}
+                    <EmptyMessage>Your basket is empty</EmptyMessage>
+                )}
         </CheckoutItems>
         <CheckoutModalButton
             onClick={() => {

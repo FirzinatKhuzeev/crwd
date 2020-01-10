@@ -10,6 +10,7 @@ import {
     RemoveItem,
     QuantityValue,
     RemoveButton,
+    CheckoutItemDescription,
 } from './styles';
 import { removeItem, addItem, clearItem } from '../../store/checkout/actions';
 import { IShopItemQuantity } from '../../store/checkout/types';
@@ -20,6 +21,7 @@ type OwnProps = {
 };
 
 type StateProps = {};
+
 type DispatchProps = {
     addItem: (item: IShopItemQuantity) => void;
     removeItem?: (item: IShopItemQuantity) => void;
@@ -34,19 +36,15 @@ const CheckoutItem: React.FC<Props> = ({ checkoutItem, addItem, removeItem, clea
             <CheckoutItemImageContainer>
                 <CheckoutItemImage src={checkoutItem.imageSrc} alt={checkoutItem.name} />
             </CheckoutItemImageContainer>
-            <div>
-            <TextContainer>{checkoutItem.name}</TextContainer>
-            <CheckoutItemQuantity>
-                <AddItem onClick={() => addItem(checkoutItem)}>+</AddItem>
-                <QuantityValue>{checkoutItem.quantity}</QuantityValue>
-                <RemoveItem
-                    disabled
-                    onClick={() => removeItem && removeItem(checkoutItem)}>
-                    -
-                </RemoveItem>
-            </CheckoutItemQuantity>
-            <TextContainer>${checkoutItem.price}</TextContainer>
-            </div>
+            <CheckoutItemDescription>
+                <TextContainer>{checkoutItem.name}</TextContainer>
+                <CheckoutItemQuantity>
+                    <AddItem onClick={() => addItem(checkoutItem)}>+</AddItem>
+                    <QuantityValue>{checkoutItem.quantity}</QuantityValue>
+                    <RemoveItem disabled onClick={() => removeItem && removeItem(checkoutItem)}>-</RemoveItem>
+                </CheckoutItemQuantity>
+                <TextContainer>${checkoutItem.price}</TextContainer>
+            </CheckoutItemDescription>
             <RemoveButton onClick={() => clearItem(checkoutItem)}>&#10005;</RemoveButton>
         </CheckoutItemContainer>
     );

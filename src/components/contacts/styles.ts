@@ -9,11 +9,6 @@ export const AddressContainer = styled.div`
     margin-left: 15px;
 `;
 
-export const AddressTitle = styled.h2`
-    margin: auto;
-    margin-bottom: 10px;
-`;
-
 export const FullAddress = styled.span`
     font-style: italic;
 `;
@@ -26,7 +21,15 @@ export const SubmitButton = styled.button`
     height: 35px;
     width: 100px;
     cursor: pointer;
-    font-family: inherit;
+    border: 1px solid #0000001c;
+    font-size: 1rem;
+`;
+
+export const Title = styled.h2`
+    margin-bottom: 10px;
+    &:first-of-type {
+        margin: auto;
+    }
 `;
 
 export const FormContainer = styled.div`
@@ -37,6 +40,8 @@ export const FormContainer = styled.div`
 
 export const FormInput = styled.input`
     display: block;
+    font-family: inherit;
+    font-size: inherit;
     width: 100%;
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
