@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import { Img, Ul, Li } from './styles';
 import { getPhotos } from '../../store/landing/actions';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { IPhoto } from '../../store/landing/types';
+import Gallery from '../gallery';
 
 type OwnProps = {};
 
@@ -22,26 +22,16 @@ const Landing: React.FC<Props> = (props: Props) => {
 
     useEffect(() => {
         props.getPhotos();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const images = [];
-    for (let i = 1; i < 30; i++) {
-        let url = `https://source.unsplash.com/random?sig=${i}`;
-        let image = <Li key={i}><Img  src={url} alt="The unsplash image" /></Li>;
-        images.push(image);
+    if (props.isFetching && !props.photos) {
+        return (<div></div>);
     }
 
-    return (<div><Ul>{images}</Ul></div>);
+    let photos = props.photos.map(p => { return { src: p.download_url, width: p.width, height: p.height } });
 
-    // return (
-    //     <div>
-    //         {this.props.isFetching ? (
-    //             <div>Loading....</div>
-    //         ) : (
-    //                 <PhotoList photos={this.props.photos} />
-    //             )}
-    //     </div>
-    // );
+    return (<Gallery photos={photos} />);
 }
 
 const mapStateToProps = (state: AppState) => ({

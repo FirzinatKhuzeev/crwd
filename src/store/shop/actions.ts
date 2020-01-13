@@ -1,9 +1,9 @@
 import {
     ShopActionTypes,
     IShopState,
-    DATA_GATHERING_SUCCESS,
-    DATA_GATHERING_START,
-    DATA_GATHERING_FAILED
+    SHOP_DATA_GATHERING_SUCCESS,
+    SHOP_DATA_GATHERING_START,
+    SHOP_DATA_GATHERING_FAILED
 } from './types';
 import { ThunkAction } from 'redux-thunk';
 import { ActionCreator, Dispatch } from 'redux';
@@ -11,14 +11,14 @@ import ShopService from '../../api/shop-service';
 
 export const getShopDataStart = (): ShopActionTypes => {
     return {
-        type: DATA_GATHERING_START,
+        type: SHOP_DATA_GATHERING_START,
         isFetching: true,
     }
 }
 
 export const getShopDataSuccess = (data: IShopState): ShopActionTypes => {
     return {
-        type: DATA_GATHERING_SUCCESS,
+        type: SHOP_DATA_GATHERING_SUCCESS,
         payload: data,
         isFetching: false,
     };
@@ -26,7 +26,7 @@ export const getShopDataSuccess = (data: IShopState): ShopActionTypes => {
 
 export const getShopDataFailed = (): ShopActionTypes => {
     return {
-        type: DATA_GATHERING_FAILED,
+        type: SHOP_DATA_GATHERING_FAILED,
         isFetching: false,
     };
 }

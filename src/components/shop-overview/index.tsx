@@ -17,6 +17,7 @@ interface IProps {
 const ShopOverview: React.FC<IProps> = (props: IProps) => {
     useEffect(() => {
         props.getShopData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
