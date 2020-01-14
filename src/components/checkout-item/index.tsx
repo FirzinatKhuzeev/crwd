@@ -39,9 +39,9 @@ const CheckoutItem: React.FC<Props> = ({ checkoutItem, addItem, removeItem, clea
             <CheckoutItemDescription>
                 <TextContainer>{checkoutItem.name}</TextContainer>
                 <CheckoutItemQuantity>
-                    <AddItem onClick={() => addItem(checkoutItem)}>+</AddItem>
+                    <AddItem onClick={() => addItem(checkoutItem)} />
                     <QuantityValue>{checkoutItem.quantity}</QuantityValue>
-                    <RemoveItem disabled onClick={() => removeItem && removeItem(checkoutItem)}>-</RemoveItem>
+                    <RemoveItem onClick={() => removeItem && removeItem(checkoutItem)} />
                 </CheckoutItemQuantity>
                 <TextContainer>${checkoutItem.price}</TextContainer>
             </CheckoutItemDescription>

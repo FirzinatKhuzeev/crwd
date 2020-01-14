@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const CheckoutItemContainer = styled.div`
     width: 100%;
     display: flex;
-    min-height: 100px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 15px 0;
     font-size: 20px;
@@ -33,17 +32,24 @@ export const CheckoutItemQuantity = styled.span`
     display: flex;
 `;
 
-export const AddItem = styled.div`
+export const AddItem = styled.button`
     cursor: pointer;
-
-    &:disabled {
-        background-color: grey;
+    border: 0;
+    padding: 0;
+    background: 0;
+    font-size: 16px;
+    &::before {
+        content: '+';
+        font-size: 20px;
     }
 `;
 
-export const RemoveItem = styled(AddItem).attrs({
-    disabled: true,
-})``;
+export const RemoveItem = styled(AddItem)`
+    &::before {
+        content: '-';
+        line-height: 0px;
+    }
+`;
 
 export const QuantityValue = styled.span`
     margin: 0 10px;

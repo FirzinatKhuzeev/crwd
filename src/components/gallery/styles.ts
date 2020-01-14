@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const GalleryContainer = styled.div`
-    margin-bottom: 15px;
+    height: 100%;
 `;
 
 export const GalleryComponent = styled.div`

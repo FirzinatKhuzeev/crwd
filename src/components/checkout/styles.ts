@@ -3,7 +3,6 @@ import { CreditCard } from 'styled-icons/boxicons-regular';
 
 export const CheckoutPageContainer = styled.div`
     width: 55%;
-    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,8 +10,7 @@ export const CheckoutPageContainer = styled.div`
 `;
 
 export const TotalContainer = styled.div`
-    margin-top: 30px;
-    margin-left: auto;
+    margin: 30px 0 30px auto;
 `;
 
 export const TotalLabel = styled.span`

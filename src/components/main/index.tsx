@@ -1,6 +1,5 @@
 import { Switch, Route, withRouter, RouteComponentProps, Redirect } from 'react-router-dom';
 import React from 'react';
-import styled from 'styled-components';
 import Landing from '../landing';
 import Contacts from '../contacts';
 import Checkout from '../checkout';
@@ -10,8 +9,7 @@ import SignIn from '../sign-in';
 import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import NotFound from '../not-found';
-
-const MainBlock = styled.main``;
+import { MainBlock } from './styles';
 
 type OwnProps = {};
 

@@ -5,8 +5,7 @@ import Header from './components/header';
 import Main from './components/main';
 
 const AppBlock = styled.div`
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 10px 45px 0 45px;
 `;
 
 const App: React.FC = () => {

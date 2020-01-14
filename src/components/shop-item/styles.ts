@@ -11,13 +11,12 @@ export const ImageContainer = styled.div`
 `;
 
 export const ShopItemContainer = styled.div`
-    width: 22vw;
+    width: 23vw;
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 50vh;
     align-items: center;
     position: relative;
-    transition: all 0.3s ease-in-out;
     &:hover {
         ${ImageContainer} {
             opacity: 0.7;
