@@ -10,11 +10,12 @@ import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import NotFound from '../not-found';
 import { MainBlock } from './styles';
+import { selectUserIsAuthenticated } from '../../store/user/selectors';
 
 type OwnProps = {};
 
 type UserState = {
-    isAuthenticated: boolean | null;
+    isAuthenticated?: boolean;
 };
 
 type DispatchProps = {};
@@ -42,7 +43,7 @@ const Main: React.FC<Props> = props => {
 };
 
 const mapStateToProps = (state: AppState) => ({
-    isAuthenticated: state.user.isAuthenticated,
+    isAuthenticated: selectUserIsAuthenticated(state),
 });
 
-export default withRouter(connect(mapStateToProps, null)(Main as any));
+export default withRouter(connect(mapStateToProps, null)(Main));

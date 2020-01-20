@@ -1,4 +1,10 @@
-import { IShopState, ShopActionTypes, SHOP_DATA_GATHERING_SUCCESS, SHOP_DATA_GATHERING_FAILED, SHOP_DATA_GATHERING_START } from './types';
+import {
+    IShopState,
+    ShopActionTypes,
+    SHOP_DATA_GATHERING_SUCCESS,
+    SHOP_DATA_GATHERING_FAILED,
+    SHOP_DATA_GATHERING_START
+} from './types';
 
 const initialState: IShopState = {
     shopCollection: [],
@@ -6,7 +12,6 @@ const initialState: IShopState = {
 };
 
 export default function shopReducer(state = initialState, action: ShopActionTypes): IShopState {
-    console.log(action.type);
     switch (action.type) {
         case SHOP_DATA_GATHERING_START:
             return {

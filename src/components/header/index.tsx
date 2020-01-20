@@ -6,6 +6,8 @@ import CheckoutModal from '../checkout-modal';
 import BasketIcon from '../basket-icon';
 import { signOut } from '../../store/user/actions';
 import { Dispatch } from 'redux';
+import { selectUserIsAuthenticated } from '../../store/user/selectors';
+import { selectShowModal } from '../../store/checkout/selectors';
 
 type OwnProps = {};
 
@@ -52,8 +54,8 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
 };
 
 const mapStateToProps = (state: AppState) => ({
-    showModal: state.checkout.showModal,
-    isAuthenticated: state.user.isAuthenticated,
+    showModal: selectShowModal(state),
+    isAuthenticated: selectUserIsAuthenticated(state),
 });
 
 const mapDispatchToProps = (dipatch: Dispatch) => ({

@@ -4,6 +4,7 @@ import { showCheckoutModal } from '../../store/checkout/actions';
 import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { selectCheckoutCount } from '../../store/checkout/selectors';
 
 type Props = {
     showCheckoutModal: () => {};
@@ -19,10 +20,7 @@ const BasketIcon: React.FC<Props> = ({ showCheckoutModal, checkoutItemsCount }) 
 
 const mapStateToProps = (state: AppState) => {
     return {
-        checkoutItemsCount: state.checkout.checkoutItems.reduce(
-            (acc, item) => acc + item.quantity,
-            0
-        ),
+        checkoutItemsCount: selectCheckoutCount(state)
     };
 };
 

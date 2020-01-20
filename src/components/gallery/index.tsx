@@ -32,7 +32,12 @@ const Gallery = React.memo(({ photos, margin = 2, limitNodeSearch = 2, targetRow
                 });
             }
         });
-        observer.observe(galleryItem.current ?? new Element());
+
+        const node = galleryItem.current;
+        if (node !== null) {
+            observer.observe(node);
+        }
+
         return () => {
             observer.disconnect();
             window.cancelAnimationFrame(animationFrameId);

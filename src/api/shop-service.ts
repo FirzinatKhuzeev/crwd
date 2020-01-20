@@ -98,7 +98,7 @@ export default class ShopService {
             isFetching: false
         };
 
-    public static getShopData(): Promise<any> {
+    public static getShopData(): Promise<IShopState> {
         return new Promise((resolve) => {
             resolve(ShopService.shopData);
         });

@@ -5,9 +5,6 @@ import {
     SHOP_DATA_GATHERING_START,
     SHOP_DATA_GATHERING_FAILED
 } from './types';
-import { ThunkAction } from 'redux-thunk';
-import { ActionCreator, Dispatch } from 'redux';
-import ShopService from '../../api/shop-service';
 
 export const getShopDataStart = (): ShopActionTypes => {
     return {
@@ -30,23 +27,3 @@ export const getShopDataFailed = (): ShopActionTypes => {
         isFetching: false,
     };
 }
-
-export const getShopData: ActionCreator<ThunkAction<
-    Promise<any>,
-    IShopState,
-    null,
-    ShopActionTypes
->> = () => {
-    return (dispatch: Dispatch) => {
-        dispatch(getShopDataStart());
-        return ShopService
-            .getShopData()
-            .then(response => {
-                dispatch(getShopDataSuccess(response));
-            })
-            .catch(error => {
-                console.error(error);
-                dispatch(getShopDataFailed());
-            });
-    };
-};

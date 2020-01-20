@@ -19,45 +19,42 @@ import {
 } from './styles';
 import { RouteComponentProps } from 'react-router-dom';
 import { addItem } from '../../store/checkout/actions';
+import { selectShopItem } from '../../store/shop/selectors';
 import { Dispatch } from 'redux';
 
-interface IShopitemProps {
-    shopItem?: IShopItem | null | undefined;
-    addItem: typeof addItem;
+type StateProps = {
+    shopItem: IShopItem;
 }
 
-type IProps = IShopitemProps & RouteComponentProps;
+type DispatchProps = {
+    addItem: (item: IShopItem) => void;
+}
 
-const ShopItemDetail: React.FC<IProps> = (props: IProps): JSX.Element => {
+type OwnProps = RouteComponentProps<{
+    id: string;
+}>;
 
-    const sizeElements = [];
-    const colorElements = [];
-    if (props.shopItem != null) {
-        const siezes = props.shopItem.size;
-        for (let i = 0; i < siezes.length; i++) {
-            sizeElements.push(
-                <Item key={i}>
-                    <SizeButton type="radio" name="radio" id={i.toString()} value={siezes[i]} />
-                    <SizeButtonLabel key={i.toString()} htmlFor={i.toString()}>
-                        {siezes[i]}
-                    </SizeButtonLabel>
-                </Item>
-            );
-        }
-        const colors = props.shopItem.color;
-        for (let i = 0; i < colors.length; i++) {
-            colorElements.push(
-                <Item key={i}>
-                    <ColorButton color={colors[i]} />
-                </Item>
-            );
-        }
-    }
+type Props = OwnProps & StateProps & DispatchProps & RouteComponentProps;
 
-    return (props.shopItem ?
-        <ItemDetailContainer>
+const ShopItemDetail: React.FC<Props> = (props: Props) => {
+    if (props.shopItem !== null) {
+        const sizeElements = props.shopItem.size.map(value => {
+            return <Item key={value}>
+                <SizeButton type="radio" name="radio" id={value.toString()} value={value} />
+                <SizeButtonLabel key={value.toString()} htmlFor={value.toString()}>
+                    {value}
+                </SizeButtonLabel>
+            </Item>
+        });
+
+        const colorElements = props.shopItem!.color.map(value => {
+            return <Item key={value}>
+                <ColorButton color={value} />
+            </Item>
+        });
+        return (<ItemDetailContainer>
             <ItemDetailImageContainer>
-                <ItemDetailImage imageSrc={props.shopItem!.imageSrc} />
+                <ItemDetailImage imageSrc={props.shopItem.imageSrc} />
             </ItemDetailImageContainer>
             <ItemDetailInfoBlock>
                 <h1>{props.shopItem!.name}</h1>
@@ -73,30 +70,23 @@ const ShopItemDetail: React.FC<IProps> = (props: IProps): JSX.Element => {
                     {colorElements}
                 </ColorContainer>
                 <AddToCardButton
-                    onClick={() => props.addItem(props.shopItem as IShopItem)}>
-                    Add To Cart <strong>${props.shopItem!.price}</strong>
+                    onClick={() => props.addItem(props.shopItem)}>
+                    Add To Cart <strong>${props.shopItem.price}</strong>
                 </AddToCardButton>
             </ItemDetailInfoBlock>
         </ItemDetailContainer>
-        : <div />
-    );
+        );
+    } else {
+        return (<div></div>);
+    }
 }
 
-export type IOwnProps = RouteComponentProps<{
-    id: string;
-}>;
-
-const mapStateToProps = (state: AppState, ownProps: IOwnProps) => {
-    const values = state.shop.shopCollection
-        .map(x => x.items.find(y => y.id === +ownProps.match.params.id))
-        .filter(i => i);
-    return {
-        shopItem: (values.length && values[0]) || null,
-    };
-};
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => ({
+    shopItem: selectShopItem(+ownProps.match.params.id)(state)
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     addItem: (item: IShopItem) => dispatch(addItem(item)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopItemDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(ShopItemDetail as any);

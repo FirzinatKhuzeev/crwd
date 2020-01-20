@@ -1,9 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { CheckoutPageContainer, TotalContainer, PayButton, TotalLabel, CardIcon } from './styles';
+import {
+    CheckoutPageContainer,
+    TotalContainer,
+    PayButton,
+    TotalLabel,
+    CardIcon
+} from './styles';
 import { IShopItemQuantity } from '../../store/checkout/types';
-import { AppState } from '../../store';
 import CheckoutItem from '../checkout-item';
+import { selectCheckoutTotal, selectCheckoutItems } from '../../store/checkout/selectors';
+import { AppState } from '../../store';
 
 type Props = {
     checkoutItems: IShopItemQuantity[];
@@ -21,19 +28,14 @@ const Checkout: React.FC<Props> = ({ checkoutItems, total }) => (
                 <PayButton><CardIcon size="24" />Pay</PayButton>
             </TotalContainer>
         ) : (
-            'Your basket is empty'
-        )}
+                'Your basket is empty'
+            )}
     </CheckoutPageContainer>
 );
 
-const mapStateToProps = (state: AppState) => {
-    return {
-        checkoutItems: state.checkout.checkoutItems,
-        total: state.checkout.checkoutItems.reduce(
-            (acc, item) => acc + item.price * item.quantity,
-            0
-        ),
-    };
-};
+const mapStateToProps = (state: AppState) => ({
+    checkoutItems: selectCheckoutItems(state),
+    total: selectCheckoutTotal(state)
+});
 
 export default connect(mapStateToProps)(Checkout);

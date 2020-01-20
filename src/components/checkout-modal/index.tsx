@@ -14,10 +14,11 @@ import { AppState } from '../../store';
 import { IShopItemQuantity } from '../../store/checkout/types';
 import { Dispatch } from 'redux';
 import BasketItem from '../basket-item';
+import { selectCheckoutItems } from '../../store/checkout/selectors';
 
 type CheckoutModalState = {
-    checkoutItems: IShopItemQuantity[];
-    dispatch: Dispatch;
+    checkoutItems?: IShopItemQuantity[];
+    dispatch?: Dispatch;
 }
 
 type Props = RouteComponentProps & CheckoutModalState;
@@ -25,8 +26,8 @@ type Props = RouteComponentProps & CheckoutModalState;
 const CheckoutModal: React.FC<Props> = ({ checkoutItems, history, dispatch }) => (
     <CheckoutModalContainer>
         <CheckoutItems>
-            {checkoutItems.length ? (
-                checkoutItems.map((item: IShopItemQuantity) => (
+            {checkoutItems!.length ? (
+                checkoutItems!.map((item: IShopItemQuantity) => (
                     <BasketItem key={item.id} checkoutItem={item} />
                 ))
             ) : (
@@ -36,7 +37,7 @@ const CheckoutModal: React.FC<Props> = ({ checkoutItems, history, dispatch }) =>
         <CheckoutModalButton
             onClick={() => {
                 history.push('/checkout');
-                dispatch(showCheckoutModal());
+                dispatch && dispatch(showCheckoutModal());
             }}>
             CHECKOUT
         </CheckoutModalButton>
@@ -45,8 +46,8 @@ const CheckoutModal: React.FC<Props> = ({ checkoutItems, history, dispatch }) =>
 
 const mapStateToProps = (state: AppState) => {
     return {
-        checkoutItems: state.checkout.checkoutItems,
+        checkoutItems: selectCheckoutItems(state),
     };
 };
 
-export default withRouter(connect(mapStateToProps, null)(CheckoutModal as any));
+export default withRouter(connect(mapStateToProps)(CheckoutModal));
