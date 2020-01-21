@@ -2,35 +2,35 @@ import {
     ADD_ITEM,
     REMOVE_ITEM,
     SHOW_CHECKOUT_MODAL,
-    IShopItemQuantity,
+    ShopItemQuantity,
     CheckoutActions,
-    CLEAR_ITEM,
+    CLEAR_ITEM
 } from './types';
-import { IShopItem } from '../shop/types';
+import { ShopData } from '../shop/types';
 
-export const addItem = (item: IShopItem): CheckoutActions => {
+export const addItem = (item: ShopData): CheckoutActions => {
     return {
         type: ADD_ITEM,
-        payload: item,
+        payload: item
     };
 };
 
-export const removeItem = (item: IShopItemQuantity): CheckoutActions => {
+export const removeItem = (item: ShopItemQuantity): CheckoutActions => {
     return {
         type: REMOVE_ITEM,
-        payload: item,
+        payload: item
     };
 };
 
-export const clearItem = (item: IShopItemQuantity): CheckoutActions => {
+export const clearItem = (item: ShopItemQuantity): CheckoutActions => {
     return {
         type: CLEAR_ITEM,
-        payload: item,
+        payload: item
     };
 };
 
 export const showCheckoutModal = (): CheckoutActions => {
     return {
-        type: SHOW_CHECKOUT_MODAL,
+        type: SHOW_CHECKOUT_MODAL
     };
 };

@@ -1,16 +1,16 @@
 import React from 'react';
-import { IShopItemQuantity } from '../../store/checkout/types';
+import { ShopItemQuantity } from '../../store/checkout/types';
 import {
     BasketItemContainer,
     BasketItemImage,
     BasketItemDetails,
     ItemName,
-    ItemPrice,
+    ItemPrice
 } from './styles';
 
 type Props = {
-    checkoutItem: IShopItemQuantity;
-}
+    checkoutItem: ShopItemQuantity;
+};
 
 const BasketItem: React.FC<Props> = ({ checkoutItem }) => (
     <BasketItemContainer>

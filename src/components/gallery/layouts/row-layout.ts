@@ -10,14 +10,27 @@ const getHeight = (row: [], containerWidth: number, margin: number) => {
     return rowWidth / totalAspectRatio;
 };
 
-const cost = (photos: [], i: number, j: number, width: number, targetHeight: number, margin: number) => {
+const cost = (
+    photos: [],
+    i: number,
+    j: number,
+    width: number,
+    targetHeight: number,
+    margin: number
+) => {
     const row: any = photos.slice(i, j);
     const commonHeight = getHeight(row, width, margin);
 
     return Math.pow(Math.abs(commonHeight - targetHeight), 2);
 };
 
-const makeGetNeighbors = (targetHeight: number, containerWidth: number, photos: [], limitNodeSearch: number, margin: number) => (start: number) => {
+const makeGetNeighbors = (
+    targetHeight: number,
+    containerWidth: number,
+    photos: [],
+    limitNodeSearch: number,
+    margin: number
+) => (start: number) => {
     const results: any = {};
     start = +start;
     results[+start] = 0;
@@ -31,8 +44,20 @@ const makeGetNeighbors = (targetHeight: number, containerWidth: number, photos: 
     return results;
 };
 
-export const computeRowLayout = ({ containerWidth, limitNodeSearch, targetRowHeight, margin, photos }: any) => {
-    const getNeighbors = makeGetNeighbors(targetRowHeight, containerWidth, photos, limitNodeSearch, margin);
+export const computeRowLayout = ({
+    containerWidth,
+    limitNodeSearch,
+    targetRowHeight,
+    margin,
+    photos
+}: any) => {
+    const getNeighbors = makeGetNeighbors(
+        targetRowHeight,
+        containerWidth,
+        photos,
+        limitNodeSearch,
+        margin
+    );
     let path = findShortestPath(getNeighbors, '0', photos.length);
     path = path.map((node: string | number) => +node);
     for (let i = 1; i < path.length; ++i) {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
-import { IPhoto } from '../../store/landing/types';
+import { Photo } from '../../store/landing/types';
 import Gallery from '../gallery';
 import { getPhotos } from '../../store/landing/utils';
 import { selectIsFetching, selectPhotos } from '../../store/landing/selectors';
@@ -9,9 +9,9 @@ import { selectIsFetching, selectPhotos } from '../../store/landing/selectors';
 type OwnProps = {};
 
 type PhotoState = {
-    photos: IPhoto[];
+    photos: Photo[];
     isFetching: boolean;
-}
+};
 
 type DispatchProps = {
     getPhotos: () => void;
@@ -20,28 +20,34 @@ type DispatchProps = {
 type Props = OwnProps & PhotoState & DispatchProps;
 
 const Landing: React.FC<Props> = (props: Props) => {
-
     useEffect(() => {
         props.getPhotos();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.getPhotos]);
+        // eslint-disable-next-line
+    }, []);
 
     if (props.isFetching && !props.photos) {
-        return (<div>Loading...</div>);
+        return <div>Loading...</div>;
     }
 
-    let photos = props.photos.map(p => { return { src: p.download_url, width: p.width, height: p.height } });
+    const photos = props.photos.map(p => {
+        return {
+            id: p.id,
+            src: p.urls.small,
+            width: p.width,
+            height: p.height
+        };
+    });
 
-    return (<Gallery photos={photos} />);
-}
+    return <Gallery photos={photos} />;
+};
 
 const mapStateToProps = (state: AppState) => ({
     photos: selectPhotos(state),
-    isFetching: selectIsFetching(state),
+    isFetching: selectIsFetching(state)
 });
 
 const mapDispatchToProps = (dipatch: any) => ({
-    getPhotos: () => dipatch(getPhotos()),
+    getPhotos: () => dipatch(getPhotos())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

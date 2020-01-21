@@ -10,7 +10,7 @@ const rootResucer = combineReducers({
     shop: shopReducer,
     checkout: checkoutReducer,
     user: userReducer,
-    photo: photoReducer,
+    photo: photoReducer
 });
 
 export type AppState = ReturnType<typeof rootResucer>;

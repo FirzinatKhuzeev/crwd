@@ -1,31 +1,30 @@
 import {
-    IDataGatheringSuccessAction,
+    DataGatheringSuccessAction,
     DATA_GATHERING_SUCCESS,
     DATA_GATHERING_FAILED,
-    IDataGatheringFailedAction,
-    IDataGatheringStartAction,
-    DATA_GATHERING_START,
-    IPhoto,
+    DataGatheringFailedAction,
+    DataGatheringStartAction,
+    DATA_GATHERING_START
 } from './types';
 
-export const getPhotosStart = (): IDataGatheringStartAction => {
+export const getPhotosStart = (): DataGatheringStartAction => {
     return {
         type: DATA_GATHERING_START,
-        isFetching: true,
+        isFetching: true
     };
 };
 
-export const getPhotosSuccess = (data: IPhoto[]): IDataGatheringSuccessAction => {
+export const getPhotosSuccess = (data: any): DataGatheringSuccessAction => {
     return {
         type: DATA_GATHERING_SUCCESS,
         payload: data,
-        isFetching: false,
+        isFetching: false
     };
 };
 
-export const getPhotosFailed = (): IDataGatheringFailedAction => {
+export const getPhotosFailed = (): DataGatheringFailedAction => {
     return {
         type: DATA_GATHERING_FAILED,
-        isFetching: false,
+        isFetching: false
     };
 };

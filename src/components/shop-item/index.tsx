@@ -5,16 +5,16 @@ import {
     NameContainer,
     PriceContainer,
     ImageContainer,
-    ItemLink,
+    ItemLink
 } from './styles';
-import { IShopItem } from '../../store/shop/types';
+import { ShopData } from '../../store/shop/types';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 type ShopItemProps = {
     title: string;
 };
 
-type Props = ShopItemProps & IShopItem & RouteComponentProps;
+type Props = ShopItemProps & ShopData & RouteComponentProps;
 
 const ShopItem: React.FC<Props> = ({ title, id, imageSrc, name, price, match }) => (
     <ShopItemContainer>

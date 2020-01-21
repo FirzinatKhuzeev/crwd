@@ -43,7 +43,7 @@ const Main: React.FC<Props> = props => {
 };
 
 const mapStateToProps = (state: AppState) => ({
-    isAuthenticated: selectUserIsAuthenticated(state),
+    isAuthenticated: selectUserIsAuthenticated(state)
 });
 
 export default withRouter(connect(mapStateToProps, null)(Main));

@@ -55,11 +55,11 @@ const Header: React.FC<Props> = ({ showModal, isAuthenticated, signOut }) => {
 
 const mapStateToProps = (state: AppState) => ({
     showModal: selectShowModal(state),
-    isAuthenticated: selectUserIsAuthenticated(state),
+    isAuthenticated: selectUserIsAuthenticated(state)
 });
 
 const mapDispatchToProps = (dipatch: Dispatch) => ({
-    signOut: () => dipatch(signOut()),
+    signOut: () => dipatch(signOut())
 });
 
 export default connect<HeaderState, DispatchProps, OwnProps, AppState>(

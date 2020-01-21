@@ -1,15 +1,18 @@
-import { IShopItemQuantity } from './types';
-import { IShopItem } from '../shop/types';
+import { ShopItemQuantity } from './types';
+import { ShopData } from '../shop/types';
 
 export const addItem = (
-    checkoutItems: IShopItemQuantity[],
-    checkoutItemToAdd: IShopItem
-): IShopItemQuantity[] => {
+    checkoutItems: ShopItemQuantity[],
+    checkoutItemToAdd: ShopData
+): ShopItemQuantity[] => {
     if (checkoutItems.find(item => item.id === checkoutItemToAdd.id)) {
         return checkoutItems.map(
-            (item): IShopItemQuantity =>
+            (item): ShopItemQuantity =>
                 item.id === checkoutItemToAdd.id
-                    ? { ...checkoutItemToAdd, quantity: item.quantity + 1 }
+                    ? {
+                          ...checkoutItemToAdd,
+                          quantity: item.quantity + 1
+                      }
                     : item
         );
     }
@@ -18,9 +21,9 @@ export const addItem = (
 };
 
 export const removeItem = (
-    checkoutItems: IShopItemQuantity[],
-    checkoutItemToRemove: IShopItemQuantity
-): IShopItemQuantity[] => {
+    checkoutItems: ShopItemQuantity[],
+    checkoutItemToRemove: ShopItemQuantity
+): ShopItemQuantity[] => {
     if (checkoutItemToRemove.quantity === 0) {
         return checkoutItems;
     }

@@ -2,22 +2,21 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { ShopOverviewContainer } from './styles';
-import { IShopCollection } from '../../store/shop/types';
+import { ShopCollection } from '../../store/shop/types';
 import ShopPreview from '../shop-preview';
 import { getShopData } from '../../store/shop/utils';
 import { selectShopCollection } from '../../store/shop/selectors';
 
 type IProps = {
-    shopDataCollection: IShopCollection[];
+    shopDataCollection: ShopCollection[];
     isFetching: boolean;
     getShopData: () => void;
-}
+};
 
 const ShopOverview: React.FC<IProps> = (props: IProps) => {
     useEffect(() => {
         props.getShopData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.getShopData]);
+    }, [props]);
 
     return (
         <ShopOverviewContainer>
@@ -26,14 +25,14 @@ const ShopOverview: React.FC<IProps> = (props: IProps) => {
             })}
         </ShopOverviewContainer>
     );
-}
+};
 
 const mapStateToProps = (state: AppState) => ({
-    shopDataCollection: selectShopCollection(state),
+    shopDataCollection: selectShopCollection(state)
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-    getShopData: () => dispatch(getShopData()),
+    getShopData: () => dispatch(getShopData())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopOverview);

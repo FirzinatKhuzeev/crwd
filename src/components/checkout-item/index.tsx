@@ -10,22 +10,22 @@ import {
     RemoveItem,
     QuantityValue,
     RemoveButton,
-    CheckoutItemDescription,
+    CheckoutItemDescription
 } from './styles';
 import { removeItem, addItem, clearItem } from '../../store/checkout/actions';
-import { IShopItemQuantity } from '../../store/checkout/types';
+import { ShopItemQuantity } from '../../store/checkout/types';
 import { Dispatch } from 'redux';
 
 type OwnProps = {
-    checkoutItem: IShopItemQuantity;
+    checkoutItem: ShopItemQuantity;
 };
 
 type StateProps = {};
 
 type DispatchProps = {
-    addItem: (item: IShopItemQuantity) => void;
-    removeItem?: (item: IShopItemQuantity) => void;
-    clearItem: (item: IShopItemQuantity) => void;
+    addItem: (item: ShopItemQuantity) => void;
+    removeItem?: (item: ShopItemQuantity) => void;
+    clearItem: (item: ShopItemQuantity) => void;
 };
 
 type Props = OwnProps & StateProps & DispatchProps;
@@ -51,9 +51,10 @@ const CheckoutItem: React.FC<Props> = ({ checkoutItem, addItem, removeItem, clea
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    addItem: (item: IShopItemQuantity) => dispatch(addItem(item)),
-    removeItem: (item: IShopItemQuantity) => item.quantity > 1 ? dispatch(removeItem(item)) : undefined,
-    clearItem: (item: IShopItemQuantity) => dispatch(clearItem(item)),
+    addItem: (item: ShopItemQuantity) => dispatch(addItem(item)),
+    removeItem: (item: ShopItemQuantity) =>
+        item.quantity > 1 ? dispatch(removeItem(item)) : undefined,
+    clearItem: (item: ShopItemQuantity) => dispatch(clearItem(item))
 });
 
 export default connect<StateProps, DispatchProps, OwnProps>(null, mapDispatchToProps)(CheckoutItem);

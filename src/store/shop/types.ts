@@ -2,7 +2,7 @@ export const SHOP_DATA_GATHERING_SUCCESS = 'SHOP_DATA_GATHERING_SUCCESS';
 export const SHOP_DATA_GATHERING_FAILED = 'SHOP_DATA_GATHERING_FAILED';
 export const SHOP_DATA_GATHERING_START = 'SHOP_DATA_GATHERING_START';
 
-export interface IShopItem {
+export interface ShopData {
     id: number;
     name: string;
     imageSrc: string;
@@ -12,15 +12,15 @@ export interface IShopItem {
     color: string[];
 }
 
-export interface IShopCollection {
+export interface ShopCollection {
     id: number;
     title: string;
     category: string;
-    items: IShopItem[];
+    items: ShopData[];
 }
 
-export interface IShopState {
-    shopCollection: IShopCollection[];
+export interface ShopState {
+    shopCollection: ShopCollection[];
     isFetching: boolean;
 }
 
@@ -31,7 +31,7 @@ interface GetShopDataStartAction {
 
 interface GetShopDataSuccessAction {
     type: typeof SHOP_DATA_GATHERING_SUCCESS;
-    payload: IShopState;
+    payload: ShopState;
     isFetching: boolean;
 }
 

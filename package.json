@@ -1,73 +1,74 @@
 {
-  "name": "crwd",
-  "version": "0.1.0",
-  "private": true,
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "leaflet": "^1.6.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-leaflet": "^2.6.1",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
-    "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0",
-    "styled-components": "^4.4.0",
-    "styled-icons": "^9.1.0",
-    "typescript": "^3.7.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
-  },
-  "cacheDirectories": [
-    "node_modules"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/huzferd/crwd.git"
-  },
-  "engines": {
-    "npm": "^6.13.6",
-    "node": "^12.14.1"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "name": "crwd",
+    "version": "0.1.0",
+    "private": true,
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.19.0",
+        "leaflet": "^1.6.0",
+        "react": "^16.10.2",
+        "react-dom": "^16.10.2",
+        "react-leaflet": "^2.6.1",
+        "react-redux": "^7.1.1",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "^3.3.0",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
+        "reselect": "^4.0.0",
+        "styled-components": "^4.4.0",
+        "styled-icons": "^9.1.0",
+        "typescript": "^3.7.3"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "lint": "tsc --noEmit && eslint */**/*.{js,ts,tsx} --quiet --fix",
+        "format": "prettier --write */**/*.{js,ts,tsx}"
+    },
+    "cacheDirectories": [
+        "node_modules"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "@types/node": "^12.11.2",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.2",
-    "@types/react-leaflet": "^2.5.0",
-    "@types/react-redux": "^7.1.5",
-    "@types/react-router-dom": "^5.1.0",
-    "@types/redux": "^3.6.0",
-    "@types/styled-components": "^4.1.19",
-    "@typescript-eslint/eslint-plugin": "^2.13.0",
-    "@typescript-eslint/parser": "^2.13.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.8.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
-    "resize-observer-polyfill": "^1.5.1"
-  }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/huzferd/crwd.git"
+    },
+    "engines": {
+        "npm": "^6.13.6",
+        "node": "^12.14.1"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.19",
+        "@types/node": "^12.11.2",
+        "@types/react": "^16.9.9",
+        "@types/react-dom": "^16.9.2",
+        "@types/react-leaflet": "^2.5.0",
+        "@types/react-redux": "^7.1.5",
+        "@types/react-router-dom": "^5.1.0",
+        "@types/redux": "^3.6.0",
+        "@types/styled-components": "^4.1.19",
+        "@typescript-eslint/eslint-plugin": "^2.13.0",
+        "@typescript-eslint/parser": "^2.13.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.8.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "prettier": "^1.19.1",
+        "resize-observer-polyfill": "^1.5.1"
+    }
 }

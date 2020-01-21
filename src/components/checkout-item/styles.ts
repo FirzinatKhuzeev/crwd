@@ -15,8 +15,7 @@ export const CheckoutItemDescription = styled.div`
     justify-content: space-around;
 `;
 
-export const TextContainer = styled.span`
-`;
+export const TextContainer = styled.span``;
 
 export const CheckoutItemImageContainer = styled.div`
     width: 200px;

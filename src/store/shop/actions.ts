@@ -1,6 +1,6 @@
 import {
     ShopActionTypes,
-    IShopState,
+    ShopState,
     SHOP_DATA_GATHERING_SUCCESS,
     SHOP_DATA_GATHERING_START,
     SHOP_DATA_GATHERING_FAILED
@@ -9,21 +9,21 @@ import {
 export const getShopDataStart = (): ShopActionTypes => {
     return {
         type: SHOP_DATA_GATHERING_START,
-        isFetching: true,
-    }
-}
+        isFetching: true
+    };
+};
 
-export const getShopDataSuccess = (data: IShopState): ShopActionTypes => {
+export const getShopDataSuccess = (data: ShopState): ShopActionTypes => {
     return {
         type: SHOP_DATA_GATHERING_SUCCESS,
         payload: data,
-        isFetching: false,
+        isFetching: false
     };
-}
+};
 
 export const getShopDataFailed = (): ShopActionTypes => {
     return {
         type: SHOP_DATA_GATHERING_FAILED,
-        isFetching: false,
+        isFetching: false
     };
-}
+};

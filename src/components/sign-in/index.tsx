@@ -10,7 +10,7 @@ import {
     GoogleIcon,
     ButtonsContainter,
     CreateAccountLink,
-    GoogleSignInButton,
+    GoogleSignInButton
 } from './styles';
 import { signInEmail } from '../../store/user/actions';
 import { Dispatch } from 'redux';
@@ -18,19 +18,21 @@ import { UserCredential } from '../../store/user/types';
 
 type Props = {
     signInEmail: (cretential: UserCredential) => {};
-}
+};
 
-const SignIn: React.FC<Props> = (props) => {
+const SignIn: React.FC<Props> = props => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     return (
         <SignInContainer>
             <SignInTitle>Sign In</SignInTitle>
-            <FormContainer onSubmit={e => {
-                e.preventDefault();
-                props.signInEmail({ email, password });
-            }}>
+            <FormContainer
+                onSubmit={e => {
+                    e.preventDefault();
+                    props.signInEmail({ email, password });
+                }}
+            >
                 <FormInput
                     required
                     name="email"
@@ -46,19 +48,21 @@ const SignIn: React.FC<Props> = (props) => {
                     onChange={e => setPassword(e.target.value)}
                 />
                 <ButtonsContainter>
-                    <GoogleSignInButton><GoogleIcon size="20" /> Sign in with Google</GoogleSignInButton>
+                    <GoogleSignInButton>
+                        <GoogleIcon size="20" /> Sign in with Google
+                    </GoogleSignInButton>
                     <SignInButton type="submit">Sign in</SignInButton>
                 </ButtonsContainter>
                 <AccountContainer>
-                    <CreateAccountLink href="/"> Don't have an account?</CreateAccountLink>
+                    <CreateAccountLink href="/"> Don’t have an account?</CreateAccountLink>
                 </AccountContainer>
             </FormContainer>
         </SignInContainer>
     );
-}
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signInEmail: (credential: UserCredential) => dispatch(signInEmail(credential)),
+    signInEmail: (credential: UserCredential) => dispatch(signInEmail(credential))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);

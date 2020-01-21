@@ -9,7 +9,7 @@ import { selectCheckoutCount } from '../../store/checkout/selectors';
 type Props = {
     showCheckoutModal: () => {};
     checkoutItemsCount: number;
-}
+};
 
 const BasketIcon: React.FC<Props> = ({ showCheckoutModal, checkoutItemsCount }) => (
     <BasketIconContainer onClick={showCheckoutModal}>
@@ -25,7 +25,7 @@ const mapStateToProps = (state: AppState) => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    showCheckoutModal: () => dispatch(showCheckoutModal()),
+    showCheckoutModal: () => dispatch(showCheckoutModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasketIcon);

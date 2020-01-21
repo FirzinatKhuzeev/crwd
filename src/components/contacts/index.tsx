@@ -8,7 +8,7 @@ import {
     FormInput,
     TextArea,
     FullAddress,
-    SubmitButton,
+    SubmitButton
 } from './styles';
 
 const Contacts: React.FC = () => {
@@ -24,7 +24,8 @@ const Contacts: React.FC = () => {
                 scrollWheelZoom={true}
                 dragging={true}
                 animate={true}
-                easeLinearity={0.35}>
+                easeLinearity={0.35}
+            >
                 <TileLayer
                     attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -37,29 +38,23 @@ const Contacts: React.FC = () => {
                 <Title>Address</Title>
                 <FullAddress>
                     Akvelon
-                        <br />
+                    <br />
                     Peterburgskaya St, 50к23,
-                        <br />
+                    <br />
                     office 521, Kazan, Tatarstan, 420107
-                        <br />
+                    <br />
                     +7 (999) 222-22-22
-                    </FullAddress>
+                </FullAddress>
                 <Title>Contact Us</Title>
                 <FormContainer>
                     <FormInput type="text" placeholder="Name" />
                     <FormInput type="email" placeholder="Email" />
-                    <TextArea
-                        id="story"
-                        name="story"
-                        rows={5}
-                        cols={33}
-                        placeholder="Message"
-                    />
+                    <TextArea id="story" name="story" rows={5} cols={33} placeholder="Message" />
                     <SubmitButton type="submit">Submit</SubmitButton>
                 </FormContainer>
             </AddressContainer>
         </ContactsContainer>
     );
-}
+};
 
 export default Contacts;

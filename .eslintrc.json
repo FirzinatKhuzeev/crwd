@@ -1,0 +1,52 @@
+{
+    "env": {
+        "browser": true,
+        "jasmine": true,
+        "jest": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "react/prop-types": 0,
+        "eslint no-undef": 0,
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true
+            }
+        ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "array": true,
+                "object": true
+            },
+            {
+                "enforceForRenamedProperties": false
+            }
+        ]
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        }
+    }
+}
