@@ -4,8 +4,9 @@ import { AppState } from '../../store';
 import { ShopOverviewContainer } from './styles';
 import { ShopCollection } from '../../store/shop/types';
 import ShopPreview from '../shop-preview';
-import { getShopData } from '../../store/shop/utils';
 import { selectShopCollection } from '../../store/shop/selectors';
+import { getShopDataStart } from '../../store/shop/actions';
+import { Dispatch } from 'redux';
 
 type IProps = {
     shopDataCollection: ShopCollection[];
@@ -31,8 +32,8 @@ const mapStateToProps = (state: AppState) => ({
     shopDataCollection: selectShopCollection(state)
 });
 
-const mapDispatchToProps = (dispatch: any) => ({
-    getShopData: () => dispatch(getShopData())
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    getShopData: () => dispatch(getShopDataStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopOverview);

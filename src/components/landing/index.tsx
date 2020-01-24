@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { AppState } from '../../store';
 import { Photo } from '../../store/landing/types';
 import Gallery from '../gallery';
-import { getPhotos } from '../../store/landing/utils';
 import { selectIsFetching, selectPhotos } from '../../store/landing/selectors';
+import { getPhotosStart } from '../../store/landing/actions';
 
 type OwnProps = {};
 
@@ -47,7 +47,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dipatch: any) => ({
-    getPhotos: () => dipatch(getPhotos())
+    getPhotos: () => dipatch(getPhotosStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

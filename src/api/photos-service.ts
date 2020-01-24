@@ -14,14 +14,19 @@ export default class PhotosService {
             );
         }
         const results = await this.getData(noPage);
-        return this.pageCount > noPage ? results.concat(await this.getPhotos(noPage + 1)) : results;
+
+        return this.pageCount > noPage ? results.concat(await this.getPhotos(++noPage)) : results;
     }
 
     private async getData(noPage = 1): Promise<Photo[]> {
         return axios
-            .get(
-                `${this.apiUrl}?page=${noPage}&per_page=${this.limitPerPage}&client_id=${this.apiKey}`
-            )
+            .get<Photo[]>(this.apiUrl, {
+                params: {
+                    page: noPage,
+                    per_page: this.limitPerPage,
+                    client_id: this.apiKey
+                }
+            })
             .then(response => {
                 return response.data as Photo[];
             });

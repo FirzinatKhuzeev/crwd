@@ -4,7 +4,7 @@ import { AppState } from '../../store';
 import { connect } from 'react-redux';
 import CheckoutModal from '../checkout-modal';
 import BasketIcon from '../basket-icon';
-import { signOut } from '../../store/user/actions';
+import { signOutStart } from '../../store/user/actions';
 import { Dispatch } from 'redux';
 import { selectUserIsAuthenticated } from '../../store/user/selectors';
 import { selectShowModal } from '../../store/checkout/selectors';
@@ -59,7 +59,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dipatch: Dispatch) => ({
-    signOut: () => dipatch(signOut())
+    signOut: () => dipatch(signOutStart())
 });
 
 export default connect<HeaderState, DispatchProps, OwnProps, AppState>(

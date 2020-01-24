@@ -24,18 +24,18 @@ export interface ShopState {
     isFetching: boolean;
 }
 
-interface GetShopDataStartAction {
+export interface GetShopDataStartAction {
     type: typeof SHOP_DATA_GATHERING_START;
     isFetching: boolean;
 }
 
-interface GetShopDataSuccessAction {
+export interface GetShopDataSuccessAction {
     type: typeof SHOP_DATA_GATHERING_SUCCESS;
     payload: ShopState;
     isFetching: boolean;
 }
 
-interface GetShopDataFailedAction {
+export interface GetShopDataFailedAction {
     type: typeof SHOP_DATA_GATHERING_FAILED;
     isFetching: boolean;
 }

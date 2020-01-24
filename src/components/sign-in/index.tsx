@@ -12,12 +12,12 @@ import {
     CreateAccountLink,
     GoogleSignInButton
 } from './styles';
-import { signInEmail } from '../../store/user/actions';
 import { Dispatch } from 'redux';
 import { UserCredential } from '../../store/user/types';
+import { signInEmailStart } from '../../store/user/actions';
 
 type Props = {
-    signInEmail: (cretential: UserCredential) => {};
+    signInEmail: (cretential: UserCredential) => void;
 };
 
 const SignIn: React.FC<Props> = props => {
@@ -62,7 +62,7 @@ const SignIn: React.FC<Props> = props => {
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signInEmail: (credential: UserCredential) => dispatch(signInEmail(credential))
+    signInEmail: (credential: UserCredential) => dispatch(signInEmailStart(credential))
 });
 
 export default connect(null, mapDispatchToProps)(SignIn);
